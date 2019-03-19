@@ -7,7 +7,7 @@ RSpec.describe BookAuthor, type: :model do
   end
 
   describe 'Relationships' do
-    it { should belong_to :authors }
-    it { should belong_to :books }
+    it { should belong_to :author }
+    it { should belong_to :book }
   end
 end
