@@ -1,3 +1,6 @@
+<section class="secondary-nav">
+  <%= link_to "Add a Book", new_book_path %>
+</section>
 <% @books.each do |book| %>
   <section class="book-<%= book.id %>">
     <img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>">
