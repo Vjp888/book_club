@@ -6,7 +6,8 @@ RSpec.describe Review, type: :model do
     it { should validate_presence_of :title }
     it { should validate_presence_of :description }
     it { should validate_presence_of :username }
-    it { should validate_presence_of :book_id }
+
+    it { should validate_numericality_of(:rating).only_integer }
   end
 
   describe 'Relationships' do
