@@ -10,7 +10,7 @@ RSpec.describe 'Book Show Page', type: :feature do
                                    year_published: 1987)
     BookAuthor.create(book_id: book_1.id, author_id: author_2.id)
 
-    visit "/books/#{book_1.id}"
+    visit book_path(book_1.id)
 
     within ".book-information" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
