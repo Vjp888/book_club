@@ -15,13 +15,21 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'Instance methods' do
+    before(:each) do
+      @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
+      @book_1.reviews.create(rating: 5, title: 'Review_1_title', description: 'Review_1_description', username: 'Review_1_username')
+      @book_1.reviews.create(rating: 4, title: 'Review_2_title', description: 'Review_2_description', username: 'Review_2_username')
+    end
+
     context '.average_rating' do
       it 'returns the average rating of all reviews for the book' do
-        book_1 = Book.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
-        book_1.reviews.create(rating: 5, title: 'Review_1_title', description: 'Review_1_description', username: 'Review_1_username')
-        book_1.reviews.create(rating: 4, title: 'Review_2_title', description: 'Review_2_description', username: 'Review_2_username')
+        expect(@book_1.average_rating).to eq(4.5)
+      end
+    end
 
-        expect(book_1.average_rating).to eq(4.5)
+    context '.review_count' do
+      it 'returns the count of reviews for the book' do
+        expect(@book_1.review_count).to eq(2)
       end
     end
   end
