@@ -10,3 +10,14 @@
   <% end %>
   </ul>
 </section>
+
+<section class="reviews">
+  <% @book.reviews.each do |review| %>
+    <article class="review" id="review-<%= review.id %>">
+      <p><%= review.username %></p>
+      <p><%= review.rating %>/5</p>
+      <p><%= review.title %></p>
+      <p><%= review.description %></p>
+    </article>
+  <% end %>
+</section>
