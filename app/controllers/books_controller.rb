@@ -13,7 +13,6 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.create(book_params)
-    # binding.pry
     if @book.save
       params[:author_list].split(',').map do |author|
         @book.authors << Author.find_or_create_by(name: author.titleize.strip)
