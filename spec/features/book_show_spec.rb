@@ -4,11 +4,10 @@ RSpec.describe 'Book Show Page', type: :feature do
   it 'shows book information' do
     author_1 = Author.create(name: 'Author 1 name')
     author_2 = Author.create(name: 'Author 2 name')
-    book_1 = author_1.books.create(thumbnail: 'steve.jpg',
+    book_1 = Book.create(thumbnail: 'steve.jpg',
                                    title: 'Where The Wild Things Are',
                                    pages: 40,
-                                   year_published: 1987)
-    BookAuthor.create(book_id: book_1.id, author_id: author_2.id)
+                                   year_published: 1987, authors: [author_1, author_2])
 
     visit book_path(book_1.id)
 

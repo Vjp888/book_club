@@ -10,9 +10,9 @@ RSpec.describe 'As a user', type: :feature do
 
     fill_in 'Title', with: 'book 1'
     fill_in 'Pages', with: '1234'
-    fill_in 'Year Published', with: '1948'
+    fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
-    fill_in 'Author(s)', with: 'Steve, bob'
+    fill_in 'author_list', with: 'Steve, bob'
 
     click_button 'Create Book'
     book = Book.last
@@ -22,8 +22,8 @@ RSpec.describe 'As a user', type: :feature do
     expect(page).to have_content("Page Count: 1234")
     expect(page).to have_content("Year Published: 1948")
     within '.authors' do
-      expect(page).to have_content("Steve")
-      expect(page).to have_content("bob")
+      expect(page).to have_link("Steve")
+      expect(page).to have_link("Bob")
     end
   end
 
@@ -39,9 +39,9 @@ RSpec.describe 'As a user', type: :feature do
 
     fill_in 'Title', with: 'book 1'
     fill_in 'Pages', with: '1234'
-    fill_in 'Year Published', with: '1948'
+    fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
-    fill_in 'Author(s)', with: 'Steve, bob'
+    fill_in 'author_list', with: 'Steve, bob'
 
     click_button 'Create Book'
 
@@ -61,11 +61,11 @@ RSpec.describe 'As a user', type: :feature do
 
     fill_in 'Title', with: 'book 1'
     fill_in 'Pages', with: '1234'
-    fill_in 'Year Published', with: '1948'
+    fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
-    fill_in 'Author(s)', with: 'bobby'
+    fill_in 'author_list', with: 'bobby'
 
-    click_botton 'Create Book'
+    click_button 'Create Book'
 
     author_check = Author.last
 
@@ -81,13 +81,33 @@ RSpec.describe 'As a user', type: :feature do
 
     fill_in 'Title', with: 'book 1'
     fill_in 'Pages', with: '1234'
-    fill_in 'Year Published', with: '1948'
-    fill_in 'Author(s)', with: 'bobby, bob'
+    fill_in 'Year published', with: '1948'
+    fill_in 'author_list', with: 'bobby, bob'
 
     click_button 'Create Book'
 
     book = Book.last
-
     expect(book.thumbnail).to eq("https://www.libreture.com/static/images/book-placeholder.png")
+  end
+
+  it 'shows error messages when no info is given' do
+    author = Author.create(name: 'bobby')
+    author.books.create(title: 'book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
+
+    visit books_path
+
+    click_link 'Add a Book'
+
+    expect(current_path).to eq(new_book_path)
+
+    fill_in 'Title', with: 'book 1'
+    fill_in 'Pages', with: '1234'
+    fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
+    fill_in 'author_list', with: 'Steve, bob'
+
+    click_button 'Create Book'
+
+    expect(page).to have_content("Title has already been taken")
+    expect(page).to have_content("Year published can't be blank")
   end
 end

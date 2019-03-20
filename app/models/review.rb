@@ -4,6 +4,5 @@ class Review < ApplicationRecord
   validates_presence_of :rating,
                         :title,
                         :description,
-                        :username,
-                        :book_id
+                        :username
 end
