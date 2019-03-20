@@ -2,7 +2,7 @@
   <%= link_to "Add a Book", new_book_path %>
 </section>
 <% @books.each do |book| %>
-  <section class="book-<%= book.id %>">
+  <section id="book-<%= book.id %>">
     <img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>">
     <p>Title: <%= book.title %> </p>
     <p>Page Count: <%= book.pages %> </p>
@@ -13,5 +13,7 @@
       <li><%= link_to author.name %></li>
     <% end %>
     </ul>
+    <p>Average rating: <%= book.average_rating %> out of 5</p>
+    <p>Total reviews: <%= book.review_count %></p>
   </section>
 <% end %>
