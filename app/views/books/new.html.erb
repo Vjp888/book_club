@@ -1,0 +1,36 @@
+<% if @book.errors.any? %>
+<ul>
+  <% @book.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+<%= form_for @book do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :pages %>
+    <%= f.text_field :pages %>
+  </p>
+
+  <p>
+    <%= f.label :year_published %>
+    <%= f.text_field :year_published %>
+  </p>
+
+  <p>
+    <label for="author_list">Authors</label>
+    <input type="text" name="author_list" placeholder="Optional">
+  </p>
+
+  <p>
+    <%= f.label :thumbnail %>
+    <%= f.text_field :thumbnail, placeholder: 'Optional' %>
+  </p>
+
+  <p><%= f.submit %></p>
+
+<% end %>
