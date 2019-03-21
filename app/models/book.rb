@@ -22,4 +22,12 @@ class Book < ApplicationRecord
   def remove_author(author)
     authors.where.not(id: author.id)
   end
+
+  def grab_reviews(direction, limit)
+    if direction == "top"
+      self.reviews.order(rating: :desc, username: :desc).limit(limit)
+    elsif direction == "bottom"
+      self.reviews.order(rating: :asc, username: :desc).limit(limit)
+    end
+  end
 end
