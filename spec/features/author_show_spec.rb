@@ -17,7 +17,7 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content("Title: #{book_1.title}")
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: #{book_1.year_published}")
-      expect(page).to_not have_content("Bob")
+      expect(page).to_not have_link("Bob")
     end
 
     within "#book-#{book_2.id}" do
@@ -25,7 +25,7 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content("Title: #{book_2.title}")
       expect(page).to have_content("Page Count: #{book_2.pages}")
       expect(page).to have_content("Year Published: #{book_2.year_published}")
-      expect(page).to_not have_content("Bob")
+      expect(page).to_not have_link("Bob")
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content("Title: book title 1")
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: #{book_1.year_published}")
-      expect(page).to_not have_content("Bob")
+      expect(page).to_not have_link("Bob")
     end
 
     within "#book-#{book_2.id}" do
