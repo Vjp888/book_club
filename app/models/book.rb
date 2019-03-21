@@ -18,4 +18,8 @@ class Book < ApplicationRecord
   def review_count
     reviews.count
   end
+
+  def remove_author(author)
+    authors.where.not(id: author.id)
+  end
 end

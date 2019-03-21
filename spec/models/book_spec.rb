@@ -18,21 +18,37 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'Instance methods' do
-    before(:each) do
-      @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
-      @book_1.reviews.create(rating: 5, title: 'Review_1_title', description: 'Review_1_description', username: 'Review_1_username')
-      @book_1.reviews.create(rating: 4, title: 'Review_2_title', description: 'Review_2_description', username: 'Review_2_username')
-    end
+    describe 'review ratings and counts' do
+      before(:each) do
+        @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
+        @book_1.reviews.create(rating: 5, title: 'Review_1_title', description: 'Review_1_description', username: 'Review_1_username')
+        @book_1.reviews.create(rating: 4, title: 'Review_2_title', description: 'Review_2_description', username: 'Review_2_username')
+      end
 
-    context '.average_rating' do
-      it 'returns the average rating of all reviews for the book' do
-        expect(@book_1.average_rating).to eq(4.5)
+      context '.average_rating' do
+        it 'returns the average rating of all reviews for the book' do
+          expect(@book_1.average_rating).to eq(4.5)
+        end
+      end
+
+      context '.review_count' do
+        it 'returns the count of reviews for the book' do
+          expect(@book_1.review_count).to eq(2)
+        end
       end
     end
 
-    context '.review_count' do
-      it 'returns the count of reviews for the book' do
-        expect(@book_1.review_count).to eq(2)
+    describe '.remove_author' do
+      it 'removes the given author from a book' do
+        author = Author.create(name: 'Bob')
+        author_2 = Author.create(name: 'Monkey')
+        author_3 = Author.create(name: 'Steve')
+        book_1 = Book.create(thumbnail: 'andrew.jpg', title: 'book title 2', pages: 456, year_published: 1978, authors: [author, author_2, author_3])
+
+        expectation = book_1.remove_author(author)
+        result = [author_2, author_3]
+
+        expect(expectation).to eq(result)
       end
     end
   end

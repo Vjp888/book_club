@@ -1,0 +1,20 @@
+<section class="author-name">
+  <p><%= @author.name %></p>
+</section>
+
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>">
+    <img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>">
+    <p>Title: <%= link_to book.title, book_path(book) %></p>
+    <p>Page Count: <%= book.pages %></p>
+    <p>Year Published: <%= book.year_published %></p>
+      <% if book.authors.count > 1 %>
+      <p>Co-Authors:</p>
+      <ul>
+        <% book.remove_author(@author).each do |author| %>
+          <li><%= link_to author.name, author_path(author) %></li>
+        <% end %>
+      </ul>
+      <% end %>
+  </section>
+<% end %>
