@@ -50,7 +50,7 @@ RSpec.describe 'As a visitor', type: :feature do
     end
 
     within "#book-#{book_2.id}" do
-      expect(page).to have_xpath("//img[@src='steve.jpg']")
+      expect(page).to have_xpath("//img[@src='andrew.jpg']")
       expect(page).to have_content("Title: #{book_2.title}")
       expect(page).to have_link("#{book_2.title}")
       expect(page).to have_content("Page Count: #{book_2.pages}")
