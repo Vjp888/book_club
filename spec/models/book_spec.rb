@@ -53,7 +53,7 @@ RSpec.describe Book, type: :model do
     end
 
     describe '.grab_reviews' do
-      it 'returns the top or bottom three reviews for a book' do
+      it 'returns the top or bottom number of reviews for a book' do
         author = Author.create(name: 'bob')
         book = author.books.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
         review_5 = book.reviews.create(rating: 5, title: "meh", description: "whahhednd vijnvsihb", username: "bob")
@@ -65,8 +65,8 @@ RSpec.describe Book, type: :model do
         result_top = [review_5, review_4, review_3]
         result_bottom = [review_1, review_2, review_3]
 
-        expect(book.grab_reviews('desc')).to eq(result_top)
-        expect(book.grab_reviews('asc')).to eq(result_bottom)
+        expect(book.grab_reviews('top', 3)).to eq(result_top)
+        expect(book.grab_reviews('bottom', 3)).to eq(result_bottom)
       end
     end
   end
