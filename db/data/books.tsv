@@ -1,0 +1,92 @@
+authors	cover	pages	title	year	cover_file
+['Suzanne Collins']	https://images.gr-assets.com/books/1447303603l/2767052.jpg	374	The Hunger Games	2008	./covers/The_Hunger_Games.jpg
+['J.K. Rowling', 'Mary GrandPré']	https://images.gr-assets.com/books/1546910265l/2.jpg	870	Harry Potter and the Order of the Phoenix	2003	./covers/Harry_Potter_and_the_Order_of_the_Phoenix.jpg
+['Harper Lee']	https://images.gr-assets.com/books/1552035043l/2657.jpg	324	To Kill a Mockingbird	1960	./covers/To_Kill_a_Mockingbird.jpg
+['Jane Austen', 'Anna Quindlen']	https://images.gr-assets.com/books/1320399351l/1885.jpg	279	Pride and Prejudice	1813	./covers/Pride_and_Prejudice.jpg
+['Stephenie Meyer']	https://images.gr-assets.com/books/1361039443l/41865.jpg	498	Twilight	2005	./covers/Twilight.jpg
+['Markus Zusak']	https://images.gr-assets.com/books/1522157426l/19063.jpg	552	The Book Thief	2005	./covers/The_Book_Thief.jpg
+['C.S. Lewis', 'Pauline Baynes']	https://images.gr-assets.com/books/1449868701l/11127.jpg	767	The Chronicles of Narnia	1956	./covers/The_Chronicles_of_Narnia.jpg
+['George Orwell']	https://images.gr-assets.com/books/1424037542l/7613.jpg	122	Animal Farm	1945	./covers/Animal_Farm.jpg
+['J.R.R. Tolkien']	https://images.gr-assets.com/books/1346072396l/30.jpg	1728	J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings	1955	./covers/JRR_Tolkien_Book_Boxed_Set_The_Hobbit_and_The_Lord_of_the_Rings.jpg
+['Margaret Mitchell']	https://images.gr-assets.com/books/1551144577l/18405.jpg	1037	Gone with the Wind	1936	./covers/Gone_with_the_Wind.jpg
+['John Green']	https://images.gr-assets.com/books/1360206420l/11870085.jpg	313	The Fault in Our Stars	1936	./covers/The_Fault_in_Our_Stars.jpg
+['Shel Silverstein']	https://images.gr-assets.com/books/1174210942l/370493.jpg	64	The Giving Tree	1964	./covers/The_Giving_Tree.jpg
+['Douglas Adams']	https://images.gr-assets.com/books/1388282444l/386162.jpg	193	The Hitchhiker's Guide to the Galaxy	1979	./covers/The_Hitchhikers_Guide_to_the_Galaxy.jpg
+['Emily Brontë', 'Richard J. Dunn', 'David Timson', 'Charlotte Brontë', 'Ruth Golding', 'Robert Heindel']	https://images.gr-assets.com/books/1388212715l/6185.jpg	464	Wuthering Heights	1847	./covers/Wuthering_Heights.jpg
+['Dan Brown']	https://images.gr-assets.com/books/1551244853l/968.jpg	489	The Da Vinci Code	2003	./covers/The_Da_Vinci_Code.jpg
+['Arthur Golden']	https://images.gr-assets.com/books/1388367666l/930.jpg	434	Memoirs of a Geisha	1997	./covers/Memoirs_of_a_Geisha.jpg
+['Lewis Carroll', 'John Tenniel', 'Martin Gardner']	https://images.gr-assets.com/books/1327872220l/24213.jpg	239	Alice's Adventures in Wonderland & Through the Looking-Glass	1871	./covers/Alices_Adventures_in_Wonderland__Through_the_LookingGlass.jpg
+['Oscar Wilde', 'Jeffrey Eugenides']	https://images.gr-assets.com/books/1546103428l/5297.jpg	367	The Picture of Dorian Gray	1890	./covers/The_Picture_of_Dorian_Gray.jpg
+['Victor Hugo', 'Lee Fahnestock', 'Norman MacAfee']	https://images.gr-assets.com/books/1411852091l/24280.jpg	1463	Les Misérables	1862	./covers/Les_Misrables.jpg
+['Charlotte Brontë', 'Michael Mason']	https://images.gr-assets.com/books/1327867269l/10210.jpg	507	Jane Eyre	1847	./covers/Jane_Eyre.jpg
+['Veronica Roth']	https://images.gr-assets.com/books/1328559506l/13335037.jpg	487	Divergent	2011	./covers/Divergent.jpg
+['William Shakespeare', 'Barbara A. Mowat', 'Paul Werstine']	https://images.gr-assets.com/books/1327872146l/18135.jpg	281	Romeo and Juliet	1595	./covers/Romeo_and_Juliet.jpg
+['William Golding']	https://images.gr-assets.com/books/1327869409l/7624.jpg	182	Lord of the Flies	1954	./covers/Lord_of_the_Flies.jpg
+['Paulo Coelho', 'Alan R. Clarke', 'Özdemir İnce']	https://images.gr-assets.com/books/1483412266l/865.jpg	197	The Alchemist	1988	./covers/The_Alchemist.jpg
+['Fyodor Dostoyevsky', 'David McDuff']	https://images.gr-assets.com/books/1382846449l/7144.jpg	671	Crime and Punishment	1866	./covers/Crime_and_Punishment.jpg
+['Stephen Chbosky']	https://images.gr-assets.com/books/1520093244l/22628.jpg	213	The Perks of Being a Wallflower	1866	./covers/The_Perks_of_Being_a_Wallflower.jpg
+['Orson Scott Card']	https://images.gr-assets.com/books/1408303130l/375802.jpg	324	Ender's Game	1985	./covers/Enders_Game.jpg
+['Cassandra Clare']	https://images.gr-assets.com/books/1432730315l/256683.jpg	485	City of Bones	1985	./covers/City_of_Bones.jpg
+['Kathryn Stockett']	https://images.gr-assets.com/books/1346100365l/4667024.jpg	465	The Help	1985	./covers/The_Help.jpg
+['F. Scott Fitzgerald']	https://images.gr-assets.com/books/1490528560l/4671.jpg	180	The Great Gatsby	1925	./covers/The_Great_Gatsby.jpg
+['E.B. White', 'Garth Williams', 'Rosemary Wells']	https://images.gr-assets.com/books/1439632243l/24178.jpg	184	Charlotte's Web	1952	./covers/Charlottes_Web.jpg
+['Audrey Niffenegger']	https://images.gr-assets.com/books/1380660571l/18619684.jpg	500	The Time Traveler's Wife	2003	./covers/The_Time_Travelers_Wife.jpg
+['L.M. Montgomery']	https://images.gr-assets.com/books/1390789015l/8127.jpg	320	Anne of Green Gables	1908	./covers/Anne_of_Green_Gables.jpg
+['John Steinbeck']	https://images.gr-assets.com/books/1511302904l/890.jpg	112	Of Mice and Men	1937	./covers/Of_Mice_and_Men.jpg
+['Bram Stoker', 'Nina Auerbach', 'David J. Skal']	https://images.gr-assets.com/books/1387151694l/17245.jpg	488	Dracula	1897	./covers/Dracula.jpg
+['Aldous Huxley', 'Felisberto Albuquerque']	https://images.gr-assets.com/books/1523061131l/5129.jpg	288	Brave New World	1932	./covers/Brave_New_World.jpg
+['Antoine de Saint-Exupéry', 'Richard Howard']	https://images.gr-assets.com/books/1367545443l/157993.jpg	93	The Little Prince	1943	./covers/The_Little_Prince.jpg
+['Gabriel García Márquez', 'Gregory Rabassa']	https://images.gr-assets.com/books/1327881361l/320.jpg	417	One Hundred Years of Solitude	1967	./covers/One_Hundred_Years_of_Solitude.jpg
+['William Goldman']	https://images.gr-assets.com/books/1327903636l/21787.jpg	398	The Princess Bride	1973	./covers/The_Princess_Bride.jpg
+['J.D. Salinger']	https://images.gr-assets.com/books/1398034300l/5107.jpg	277	The Catcher in the Rye	1951	./covers/The_Catcher_in_the_Rye.jpg
+['Frances Hodgson Burnett']	https://images.gr-assets.com/books/1327873635l/2998.jpg	331	The Secret Garden	1911	./covers/The_Secret_Garden.jpg
+['Khaled Hosseini']	https://images.gr-assets.com/books/1345958969l/128029.jpg	372	A Thousand Splendid Suns	2007	./covers/A_Thousand_Splendid_Suns.jpg
+"[""Madeleine L'Engle""]"	https://images.gr-assets.com/books/1329061522l/18131.jpg	211	A Wrinkle in Time	1962	./covers/A_Wrinkle_in_Time.jpg
+['J.K. Rowling', 'Mary GrandPré']	https://images.gr-assets.com/books/1474154022l/3.jpg	320	Harry Potter and the Sorcerer's Stone	1962	./covers/Harry_Potter_and_the_Sorcerers_Stone.jpg
+['Ray Bradbury', 'Alfredo Crespo']	https://images.gr-assets.com/books/1351643740l/4381.jpg	175	Fahrenheit 451	1953	./covers/Fahrenheit_.jpg
+['George R.R. Martin']	https://images.gr-assets.com/books/1436732693l/13496.jpg	848	A Game of Thrones	1996	./covers/A_Game_of_Thrones.jpg
+['Rick Riordan']	https://images.gr-assets.com/books/1400602609l/28187.jpg	377	The Lightning Thief	2005	./covers/The_Lightning_Thief.jpg
+['Mark Twain', 'Guy Cardwell', 'John Seelye']	https://images.gr-assets.com/books/1546096879l/2956.jpg	327	The Adventures of Huckleberry Finn	1884	./covers/The_Adventures_of_Huckleberry_Finn.jpg
+['Alice Sebold']	https://images.gr-assets.com/books/1457810586l/12232938.jpg	328	The Lovely Bones	2002	./covers/The_Lovely_Bones.jpg
+['Maurice Sendak']	https://images.gr-assets.com/books/1384434560l/19543.jpg	37	Where the Wild Things Are	1963	./covers/Where_the_Wild_Things_Are.jpg
+['Dr. Seuss']	https://images.gr-assets.com/books/1468680100l/23772.jpg	62	Green Eggs and Ham	1960	./covers/Green_Eggs_and_Ham.jpg
+['Yann Martel']	https://images.gr-assets.com/books/1320562005l/4214.jpg	460	Life of Pi	2001	./covers/Life_of_Pi.jpg
+['S.E. Hinton']	https://images.gr-assets.com/books/1442129426l/231804.jpg	192	The Outsiders	1967	./covers/The_Outsiders.jpg
+['Charles Dickens', 'Richard Maxwell', 'Saniye Güven', 'Sevil İnan Sönmez']	https://images.gr-assets.com/books/1344922523l/1953.jpg	489	A Tale of Two Cities	1859	./covers/A_Tale_of_Two_Cities.jpg
+['Homer', 'Robert Fagles', 'Bernard Knox']	https://images.gr-assets.com/books/1390173285l/1381.jpg	541	The Odyssey	-720	./covers/The_Odyssey.jpg
+['Sara Gruen']	https://images.gr-assets.com/books/1494428973l/43641.jpg	335	Water for Elephants	2006	./covers/Water_for_Elephants.jpg
+['Vladimir Nabokov', 'Craig Raine']	https://images.gr-assets.com/books/1377756377l/7604.jpg	417	Lolita	1955	./covers/Lolita.jpg
+['Kurt Vonnegut']	https://images.gr-assets.com/books/1440319389l/4981.jpg	275	Slaughterhouse-Five	1969	./covers/SlaughterhouseFive.jpg
+['Mary Wollstonecraft Shelley', 'Percy Bysshe Shelley', 'Maurice Hindle']	https://images.gr-assets.com/books/1381512375l/18490.jpg	273	Frankenstein	1818	./covers/Frankenstein.jpg
+['Joseph Heller']	https://images.gr-assets.com/books/1463157317l/168668.jpg	453	Catch-22	1961	./covers/Catch.jpg
+['Khaled Hosseini']	https://images.gr-assets.com/books/1546093833l/77203.jpg	371	The Kite Runner	2003	./covers/The_Kite_Runner.jpg
+['Ken Follett', 'طاهره صدیقیان']	https://images.gr-assets.com/books/1388193707l/5043.jpg	973	The Pillars of the Earth	1989	./covers/The_Pillars_of_the_Earth.jpg
+['Lois Lowry']	https://images.gr-assets.com/books/1342493368l/3636.jpg	208	The Giver	1993	./covers/The_Giver.jpg
+['Stephen King', 'Bernie Wrightson']	https://images.gr-assets.com/books/1213131305l/149267.jpg	1153	The Stand	1978	./covers/The_Stand.jpg
+['Margaret Atwood']	https://images.gr-assets.com/books/1546031886l/38447.jpg	344	The Handmaid's Tale	1985	./covers/The_Handmaids_Tale.jpg
+['Richard  Adams']	https://images.gr-assets.com/books/1405136931l/76620.jpg	478	Watership Down	1972	./covers/Watership_Down.jpg
+['Arthur Conan Doyle']	https://images.gr-assets.com/books/1164045516l/3590.jpg	339	The Adventures of Sherlock Holmes	1892	./covers/The_Adventures_of_Sherlock_Holmes.jpg
+['Ken Kesey']	https://images.gr-assets.com/books/1516211014l/332613.jpg	325	One Flew Over the Cuckoo's Nest	1962	./covers/One_Flew_Over_the_Cuckoos_Nest.jpg
+['Jodi Picoult']	https://images.gr-assets.com/books/1369504683l/10917.jpg	423	My Sister's Keeper	2004	./covers/My_Sisters_Keeper.jpg
+['Sylvia Plath', 'Reinhard Kaiser']	https://images.gr-assets.com/books/1473890514l/6514.jpg	294	The Bell Jar	1963	./covers/The_Bell_Jar.jpg
+['Diana Gabaldon']	https://images.gr-assets.com/books/1529065012l/10964.jpg	850	Outlander	1991	./covers/Outlander.jpg
+['Stieg Larsson', 'Reg Keeland']	https://images.gr-assets.com/books/1327868566l/2429135.jpg	465	The Girl with the Dragon Tattoo	2005	./covers/The_Girl_with_the_Dragon_Tattoo.jpg
+['Daphne du Maurier']	https://images.gr-assets.com/books/1386605169l/17899948.jpg	449	Rebecca	1938	./covers/Rebecca.jpg
+['Roald Dahl', 'Quentin Blake']	https://images.gr-assets.com/books/1388793265l/39988.jpg	240	Matilda	1988	./covers/Matilda.jpg
+['J.R.R. Tolkien']	https://images.gr-assets.com/books/1298411339l/34.jpg	398	The Fellowship of the Ring	1954	./covers/The_Fellowship_of_the_Ring.jpg
+['Betty  Smith']	https://images.gr-assets.com/books/1327883484l/14891.jpg	496	A Tree Grows in Brooklyn	1943	./covers/A_Tree_Grows_in_Brooklyn.jpg
+['Alice Walker']	https://images.gr-assets.com/books/1386925078l/11486.jpg	295	The Color Purple	1982	./covers/The_Color_Purple.jpg
+['Louisa May Alcott']	https://images.gr-assets.com/books/1388269517l/1934.jpg	449	Little Women	1868	./covers/Little_Women.jpg
+['Cormac McCarthy']	https://images.gr-assets.com/books/1439197219l/6288.jpg	241	The Road	1868	./covers/The_Road.jpg
+['Anthony Burgess']	https://images.gr-assets.com/books/1348339306l/227463.jpg	212	A Clockwork Orange	1962	./covers/A_Clockwork_Orange.jpg
+['Frank McCourt']	https://images.gr-assets.com/books/1348317139l/252577.jpg	452	Angela's Ashes	1996	./covers/Angelas_Ashes.jpg
+['Fyodor Dostoyevsky', 'Richard Pevear', 'Larissa Volokhonsky']	https://images.gr-assets.com/books/1427728126l/4934.jpg	796	The Brothers Karamazov	1879	./covers/The_Brothers_Karamazov.jpg
+['Frank Herbert']	https://images.gr-assets.com/books/1434908555l/234225.jpg	604	Dune	1965	./covers/Dune.jpg
+['Richelle Mead']	https://images.gr-assets.com/books/1381459853l/18660669.jpg	332	Vampire Academy	2007	./covers/Vampire_Academy.jpg
+['Barbara Kingsolver']	https://images.gr-assets.com/books/1412242487l/7244.jpg	546	The Poisonwood Bible	1998	./covers/The_Poisonwood_Bible.jpg
+['J.K. Rowling', 'Mary GrandPré']	https://images.gr-assets.com/books/1474171184l/136251.jpg	759	Harry Potter and the Deathly Hallows	1998	./covers/Harry_Potter_and_the_Deathly_Hallows.jpg
+['Hermann Hesse', 'Hilda Rosner']	https://images.gr-assets.com/books/1428715580l/52036.jpg	152	Siddhartha	1922	./covers/Siddhartha.jpg
+['Ayn Rand', 'Leonard Peikoff']	https://images.gr-assets.com/books/1405868167l/662.jpg	1168	Atlas Shrugged	1957	./covers/Atlas_Shrugged.jpg
+['Ray Bradbury']	https://images.gr-assets.com/books/1469704347l/17470674.jpg	227	Fahrenheit 451	1953	./covers/Fahrenheit_.jpg
+['Miguel de Cervantes Saavedra', 'Roberto González Echevarría', 'John Rutherford', 'Ernani Ssó']	https://images.gr-assets.com/books/1546112331l/3836.jpg	1023	Don Quixote	1605	./covers/Don_Quixote.jpg
+['Philip Pullman']	https://images.gr-assets.com/books/1505766203l/119322.jpg	399	The Golden Compass	1995	./covers/The_Golden_Compass.jpg
