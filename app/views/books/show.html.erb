@@ -25,13 +25,14 @@
           <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
         <% end %>
       <% else %>
-        <%= link_to "Be the first to review this book"  %>
+        <%= link_to "Be the first to review this book", new_book_review_path(@book) %>
       <% end %>
     </section>
   </section>
 </section>
 
 <section class="reviews">
+  <%= link_to 'Add review', new_book_review_path(@book) %>
   <% @book.reviews.each do |review| %>
     <article class="review" id="review-<%= review.id %>">
       <p><%= review.username %></p>
