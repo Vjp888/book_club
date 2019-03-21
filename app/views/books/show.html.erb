@@ -1,6 +1,7 @@
 <section class="book-information">
   <img src="<%= @book.thumbnail %>" alt="cover of <%= @book.title %>">
   <p>Title: <%= @book.title %> </p>
+  <p class="average-rating">Rating: <%= @book.average_rating %></p>
   <p>Page Count: <%= @book.pages %> </p>
   <p>Year Published: <%= @book.year_published %> </p>
   <p>Author(s):</p>
@@ -9,6 +10,19 @@
     <li><%= link_to author.name %></li>
   <% end %>
   </ul>
+  <section class="book-stats">
+    <section class="top-reviews">
+      <%= @book.grab_reviews('top', 3).each do |review| %>
+        <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+      <% end %>
+    </section>
+
+    <section class="bottom-reviews">
+      <%= @book.grab_reviews('bottom', 3).each do |review| %>
+        <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+      <% end %>
+    </section>
+  </section>
 </section>
 
 <section class="reviews">
