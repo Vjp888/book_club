@@ -11,3 +11,35 @@ Author.destroy_all
 BookAuthor.destroy_all
 Book.destroy_all
 Review.destroy_all
+
+options_hash = {col_sep: "\t", headers: true,
+  header_converters: :symbol, converters: :numeric}
+
+books = CSV.open('db/data/books.tsv', options_hash)
+reviews = CSV.open('db/data/reviews.tsv', options_hash)
+book_hashes = books.map{ |row| row.to_hash }
+review_hashes  = reviews.map{ |row| row.to_hash }
+
+book_hashes = book_hashes.each do |hash|
+  hash[:authors] = hash[:authors].gsub(/[^a-zA-Z\s,]/,'').split(",")
+end
+
+book_hashes.each do |book|
+  Book.create(
+    thumbnail: book[:cover],
+    title: book[:title],
+    pages: book[:pages],
+    year_published: book[:year],
+    authors: book[:authors].map { |author| Author.create(name: author) }
+  )
+end
+
+review_hashes.each do |review|
+  Review.create(
+    rating: review[:rating],
+    title: review[:review_title],
+    description: review[:review],
+    username: review[:user],
+    book: Book.where(title: review[:book_title]).first
+  )
+end
