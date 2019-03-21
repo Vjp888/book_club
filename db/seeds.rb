@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-Author.destroy_all
 BookAuthor.destroy_all
-Book.destroy_all
+Author.destroy_all
 Review.destroy_all
+Book.destroy_all
 
 options_hash = {col_sep: "\t", headers: true,
   header_converters: :symbol, converters: :numeric}
@@ -30,12 +30,14 @@ book_hashes.each do |book|
     title: book[:title],
     pages: book[:pages],
     year_published: book[:year],
-    authors: book[:authors].map { |author| Author.create(name: author) }
+    authors: book[:authors].map do |author|
+      Author.find_or_create_by(name: author)
+    end
   )
 end
 
 review_hashes.each do |review|
-  Review.create(
+  Review.find_or_create_by(
     rating: review[:rating],
     title: review[:review_title],
     description: review[:review],
