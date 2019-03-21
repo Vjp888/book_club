@@ -5,7 +5,7 @@
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
     <img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>">
-    <p>Title: <%= book.title %></p>
+    <p>Title: <%= link_to book.title, book_path(book) %></p>
     <p>Page Count: <%= book.pages %></p>
     <p>Year Published: <%= book.year_published %></p>
       <% if book.authors.count > 1 %>
