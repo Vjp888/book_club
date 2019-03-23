@@ -96,7 +96,6 @@ RSpec.describe 'As a visitor to an author show page', type: :feature do
       expect(page).to have_content("Title: meh")
       expect(page).to have_content("User: bob")
       expect(page).to have_link("bob")
-      click_link 'bob'
     end
     within "#book-#{book_2.id}" do
       expect(page).to have_content("Top Review:")
@@ -105,7 +104,8 @@ RSpec.describe 'As a visitor to an author show page', type: :feature do
       expect(page).to have_content("User: harbi")
       expect(page).to have_link("harbi")
     end
-
-    # expect(current_path).to eq(user_index_path) Renable when merged
+    
+    click_link 'bob'
+    # expect(current_path).to eq(user_index_path("bob")) Renable when merged
   end
 end
