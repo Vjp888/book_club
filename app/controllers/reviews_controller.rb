@@ -6,14 +6,20 @@ class ReviewsController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    @review = @book.reviews.create(review_params)
+    @review = @book.reviews.new(review_params)
 
-    redirect_to book_path(@book)
+    if @review.save
+      redirect_to book_path(@book)
+    else
+      render :new
+    end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:username, :rating, :title, :description)
+    rp = params.require(:review).permit(:username, :rating, :title, :description)
+    rp[:username] = rp[:username].titleize
+    rp
   end
 end
