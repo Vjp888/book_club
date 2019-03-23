@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
   resources :authors, only: [:show]
+
+  resources :reviews, only: [:index], as: 'user'
 end

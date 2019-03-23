@@ -15,14 +15,14 @@
       <section class="top-reviews">
         <p>Top Reviews</p>
         <% @book.grab_reviews('top', 3).each do |review| %>
-          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_index_path(review.username) %></p>
         <% end %>
       </section>
 
       <section class="bottom-reviews">
         <p>Bottom Reviews</p>
         <% @book.grab_reviews('bottom', 3).each do |review| %>
-          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_index_path(review.username) %></p>
         <% end %>
       <% else %>
         <%= link_to "Be the first to review this book", new_book_review_path(@book) %>

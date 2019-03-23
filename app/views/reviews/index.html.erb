@@ -1,0 +1,12 @@
+<h1><%= @user %></h1>
+
+<% @reviews.each do |review|%>
+<section id="review-<%= review.id %>">
+  <a href=<%= book_path(review.book) %>><img src="<%= review.book.thumbnail %>" alt="cover of <%= review.book.title %>"></a>
+  <p>Title of Book: <%= link_to review.book.title, book_path(review.book) %></p>
+  <p>Title: <%= review.title %></p>
+  <p>Description: <%= review.description %></p>
+  <p>Rating: <%= review.rating %> out of 5</p>
+  <p>Date Reviewed: <%= review.created_at.strftime("%m/%d/%Y") %></p>
+</section>
+<% end %>
