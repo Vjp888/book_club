@@ -16,8 +16,8 @@ RSpec.describe 'Book Show Page', type: :feature do
       expect(page).to have_content("Title: Where The Wild Things Are")
       expect(page).to have_content("Page Count: 40")
       expect(page).to have_content("Year Published: 1987")
-      expect(page).to have_content("Author 1 name")
-      expect(page).to have_content("Author 2 name")
+      expect(page).to have_link("Author 1 name", href: author_path(author_1))
+      expect(page).to have_link("Author 2 name", href: author_path(author_2))
     end
   end
 
@@ -115,7 +115,7 @@ RSpec.describe 'Book Show Page', type: :feature do
       book = author.books.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
 
       visit book_path(book)
-      
+
       expect(page).to_not have_content("Top Reviews")
       expect(page).to_not have_content("Bottom Reviews")
       expect(page).to have_link("Be the first to review this book")

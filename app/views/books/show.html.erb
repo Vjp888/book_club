@@ -7,7 +7,7 @@
   <p>Author(s):</p>
   <ul class="authors">
   <% @book.authors.each do |author| %>
-    <li><%= link_to author.name %></li>
+    <li><%= link_to author.name, author_path(author) %></li>
   <% end %>
   </ul>
   <section class="book-stats">
