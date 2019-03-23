@@ -76,4 +76,53 @@ RSpec.describe 'Book index', type: :feature do
       end
     end
   end
+
+  describe 'book statistics section' do
+    before :each do
+      @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Book 1 title', pages: 40, year_published: 1987)
+      @book_2 = Book.create(thumbnail: 'steve.jpg', title: 'Book 2 title', pages: 40, year_published: 1987)
+      @book_3 = Book.create(thumbnail: 'steve.jpg', title: 'Book 3 title', pages: 40, year_published: 1987)
+      @book_4 = Book.create(thumbnail: 'steve.jpg', title: 'Book 4 title', pages: 40, year_published: 1987)
+      @book_5 = Book.create(thumbnail: 'steve.jpg', title: 'Book 5 title', pages: 40, year_published: 1987)
+
+      @book_1.reviews.create(rating: 1, title: 'Review_title', description: 'Review_description', username: 'User1')
+
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User2')
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User3')
+
+      @book_3.reviews.create(rating: 3, title: 'Review_title', description: 'Review_description', username: 'User2')
+
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User4')
+
+      @book_5.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_5.reviews.create(rating: 5, title: 'Review_title', description: 'Review_description', username: 'User4')
+
+      visit books_path
+    end
+
+    it 'shows three of the highest rated books' do
+      within "#highest-rated-books" do
+        expect(page.all('li')[0]).to have_content("#{@book_5.title} (#{@book_5.average_rating} / 5)")
+        expect(page.all('li')[1]).to have_content("#{@book_4.title} (#{@book_4.average_rating} / 5)")
+        expect(page.all('li')[2]).to have_content("#{@book_3.title} (#{@book_3.average_rating} / 5)")
+      end
+    end
+
+    it 'shows three of the worst-rated books' do
+      within "#lowest-rated-books" do
+        expect(page.all('li')[0]).to have_content("#{@book_1.title} (#{@book_1.average_rating} / 5)")
+        expect(page.all('li')[1]).to have_content("#{@book_2.title} (#{@book_2.average_rating} / 5)")
+        expect(page.all('li')[2]).to have_content("#{@book_3.title} (#{@book_3.average_rating} / 5)")
+      end
+    end
+
+    it 'shows three users who have written the most reviews' do
+      within '#most-active-users' do
+        expect(page.all('li')[0]).to have_content("User3 (3)")
+        expect(page.all('li')[1]).to have_content("User4 (2)")
+        expect(page.all('li')[2]).to have_content("User2 (2)")
+      end
+    end
+  end
 end
