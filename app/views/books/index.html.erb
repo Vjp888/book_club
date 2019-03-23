@@ -1,3 +1,32 @@
+<section id="book-statistics">
+  <section class="book-statistics-card" id="highest-rated-books">
+    <h3>Highest rated books</h3>
+    <ul>
+      <% @books.top_three_rated.each do |book|%>
+        <li><%= book.title %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="book-statistics-card" id="lowest-rated-books">
+    <h3>Lowest rated books</h3>
+    <ul>
+      <% @books.bottom_three_rated.each do |book|%>
+        <li><%= book.title %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="book-statistics-card" id="most-active-users">
+    <h3>Most active users</h3>
+    <ul>
+      <% @reviews.most_active_users.each do |username, review_count| %>
+        <li><%= username %> (<%= review_count %>)</li>
+      <% end %>
+    </ul>
+  </section>
+</section>
+
 <section class="secondary-nav">
   <%= link_to "Add a Book", new_book_path %>
 </section>
