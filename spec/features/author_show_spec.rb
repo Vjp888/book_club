@@ -15,7 +15,7 @@ RSpec.describe 'As a visitor', type: :feature do
     within "#book-#{book_1.id}" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
       expect(page).to have_content("Title: #{book_1.title}")
-      expect(page).to have_link("#{book_1.title}")
+      expect(page).to have_link(book_1.title, href: book_path(book_1))
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: #{book_1.year_published}")
       expect(page).to_not have_link("Bob")
@@ -24,7 +24,7 @@ RSpec.describe 'As a visitor', type: :feature do
     within "#book-#{book_2.id}" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
       expect(page).to have_content("Title: #{book_2.title}")
-      expect(page).to have_link("#{book_2.title}")
+      expect(page).to have_link(book_2.title, href: book_path(book_2))
       expect(page).to have_content("Page Count: #{book_2.pages}")
       expect(page).to have_content("Year Published: #{book_2.year_published}")
       expect(page).to_not have_link("Bob")

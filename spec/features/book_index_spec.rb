@@ -12,7 +12,7 @@ RSpec.describe 'Book index', type: :feature do
 
     within "#book-#{book_1.id}" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
-      expect(page).to have_content("Title: where the wild things are")
+      expect(page).to have_link("where the wild things are", href: book_path(book_1))
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: 1987")
       expect(page).to have_link(author.name)
@@ -20,7 +20,7 @@ RSpec.describe 'Book index', type: :feature do
 
     within "#book-#{book_2.id}" do
       expect(page).to have_xpath("//img[@src='bob.jpg']")
-      expect(page).to have_content("Title: Whatever")
+      expect(page).to have_link("Whatever", href: book_path(book_2))
       expect(page).to have_content("Page Count: 230")
       expect(page).to have_content("Year Published: 2019")
       expect(page).to have_link("bob")
@@ -28,7 +28,7 @@ RSpec.describe 'Book index', type: :feature do
 
     within "#book-#{book_3.id}" do
       expect(page).to have_xpath("//img[@src='andrew.jpg']")
-      expect(page).to have_content("Title: meh")
+      expect(page).to have_link("meh", href: book_path(book_3))
       expect(page).to have_content("Page Count: 456")
       expect(page).to have_content("Year Published: 1978")
       expect(page).to have_link("bob")
