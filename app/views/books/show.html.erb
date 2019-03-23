@@ -7,21 +7,21 @@
   <p>Author(s):</p>
   <ul class="authors">
   <% @book.authors.each do |author| %>
-    <li><%= link_to author.name %></li>
+    <li><%= link_to author.name, author_path(author) %></li>
   <% end %>
   </ul>
   <section class="book-stats">
     <% unless @book.reviews.empty? %>
       <section class="top-reviews">
         <p>Top Reviews</p>
-        <%= @book.grab_reviews('top', 3).each do |review| %>
+        <% @book.grab_reviews('top', 3).each do |review| %>
           <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
         <% end %>
       </section>
 
       <section class="bottom-reviews">
-        <p>Bottome Reviews</p>
-        <%= @book.grab_reviews('bottom', 3).each do |review| %>
+        <p>Bottom Reviews</p>
+        <% @book.grab_reviews('bottom', 3).each do |review| %>
           <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
         <% end %>
       <% else %>
