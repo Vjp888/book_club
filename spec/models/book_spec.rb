@@ -17,6 +17,54 @@ RSpec.describe Book, type: :model do
     it { should have_many :reviews }
   end
 
+  describe 'Class Methods' do
+    describe 'Sorting books on index' do
+      before :each do
+        @author = Author.create(name: "Rickey Bobby")
+        @book_2 = Book.create(title: "book title 2", pages: 200, year_published: 1867, thumbnail: "steve.jpg", authors: [@author])
+        @book_1 = Book.create(title: "book title 1", pages: 100, year_published: 1980, thumbnail: "steve.jpg", authors: [@author])
+        @book_1.reviews.create(title: "fantastic", description: "asdafd", rating: 5)
+        @book_1.reviews.create(title: "horrible", description: "cdsubnvfkdf", rating: 1)
+        @book_1.reviews.create(title: "meh", description: "meh", rating: 3)
+        @book_2.reviews.create(title: "stupendous", description: "really", rating: 5)
+        @book_2.reviews.create(title: "alright", description: "kinda", rating: 4)
+        @sort_1 = [@book_1, @book_2]
+        @sort_2 = [@book_2, @book_1]
+      end
+      describe '.sort_books' do
+        it 'sorts books by given params' do
+          expect(Book.sort_books("top_reviews")).to eq(@sort_1)
+          expect(Book.sort_books("bottom_reviews")).to eq(@sort_2)
+          expect(Book.sort_books("most_pages")).to eq(@sort_2)
+          expect(Book.sort_books("least_pages")).to eq(@sort_1)
+          expect(Book.sort_books("most_reviews")).to eq(@sort_2)
+          expect(Book.sort_books("least_reviews")).to eq(@sort_1)
+          expect(Book.sort_books).to eq(Book.all)
+        end
+      end
+      describe '.sort_by_reviews' do
+        it 'it sorts books by reviews either asc or desc' do
+          expect(Book.sort_by_reviews("top")).to eq(@sort_1)
+          expect(Book.sort_by_reviews("bottom")).to eq(@sort_2)
+        end
+      end
+
+      describe '.sort_by_avg_rating' do
+        it 'it sorts books by average rating either asc or desc' do
+          expect(Book.sort_by_avg_rating("top")).to eq(@sort_2)
+          expect(Book.sort_by_avg_rating("bottom")).to eq(@sort_1)
+        end
+      end
+
+      describe '.sort_by_page_count' do
+        it 'it sorts books by page count either asc or desc' do
+          expect(Book.sort_by_page_count("top")).to eq(@sort_2)
+          expect(Book.sort_by_page_count("bottom")).to eq(@sort_1)
+        end
+      end
+    end
+  end
+
   describe 'Instance methods' do
     describe 'review ratings and counts' do
       before(:each) do
