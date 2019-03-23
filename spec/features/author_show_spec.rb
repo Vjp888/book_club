@@ -75,4 +75,37 @@ RSpec.describe 'As a visitor to an author show page', type: :feature do
       expect(page).to have_link("Steve", href: author_path(author_3))
     end
   end
+
+  it 'shows the top review information for each book on the page' do
+    author = Author.create(name: 'bob')
+    book = author.books.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
+    book.reviews.create(rating: 3, title: "whatever", description: "whahhednd vijnvsihb", username: "harbi")
+    book.reviews.create(rating: 2, title: "is horrible", description: "whahhednd vijnvsihb", username: "stub")
+    book.reviews.create(rating: 1, title: "super bad", description: "whahhednd vijnvsihb", username: "rude")
+    book.reviews.create(rating: 4, title: "haha", description: "whahhednd vijnvsihb", username: "rob")
+    book.reviews.create(rating: 5, title: "meh", description: "whahhednd vijnvsihb", username: "bob")
+
+    book_2 = author.books.create(thumbnail: 'steve.jpg', title: 'Whatever the whatever', pages: 40, year_published: 1987)
+    book_2.reviews.create(rating: 3, title: "hammy", description: "whahhednd vijnvsihb", username: "harbi")
+
+    visit author_path(author)
+
+    within "#book-#{book.id}" do
+      expect(page).to have_content("Top Review:")
+      expect(page).to have_content("Rating: 5 out of 5")
+      expect(page).to have_content("Title: meh")
+      expect(page).to have_content("User: bob")
+      expect(page).to have_link("bob")
+    end
+    within "#book-#{book_2.id}" do
+      expect(page).to have_content("Top Review:")
+      expect(page).to have_content("Rating: 3 out of 5")
+      expect(page).to have_content("Title: hammy")
+      expect(page).to have_content("User: harbi")
+      expect(page).to have_link("harbi")
+    end
+    
+    click_link 'bob'
+    # expect(current_path).to eq(user_index_path("bob")) Renable when merged
+  end
 end
