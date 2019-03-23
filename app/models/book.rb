@@ -30,4 +30,24 @@ class Book < ApplicationRecord
       self.reviews.order(rating: :asc, username: :desc).limit(limit)
     end
   end
+
+  def self.top_three_rated
+    joins(:reviews)
+    .group(:title)
+    .order("average_rating desc")
+    .limit(3)
+    .average(:rating)
+    .map { |book| Book.where(title: book.first) }
+    .flatten
+  end
+
+  def self.bottom_three_rated
+    joins(:reviews)
+    .group(:title)
+    .order("average_rating asc")
+    .limit(3)
+    .average(:rating)
+    .map { |book| Book.where(title: book.first) }
+    .flatten
+  end
 end
