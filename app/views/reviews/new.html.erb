@@ -1,4 +1,13 @@
 <h1>Add a review for <%= @book.title %></h1>
+
+<% if @review.errors.any? %>
+<ul>
+  <% @review.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
 <%= form_for [@book, @review] do |f| %>
   <p>
     <%= f.label :username %>
@@ -12,12 +21,12 @@
 
   <p>
     <%= f.label :title %>
-    <%= f.number_field :title %>
+    <%= f.text_field :title %>
   </p>
 
   <p>
     <%= f.label :description %>
-    <%= f.number_field :description %>
+    <%= f.text_field :description %>
   </p>
 
   <p><%= f.submit %></p>
