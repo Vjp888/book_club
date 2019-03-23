@@ -91,6 +91,32 @@ RSpec.describe 'Adding new review to book', type: :feature do
         expect(page).to have_content("Rating must be less than or equal to 5")
       end
 
+      it 'when I correct the error in the form, it succesfully saves the review' do
+        username = 'User1'
+        rating = 10
+        title = 'Great book'
+        description = 'I loved this book!'
+
+        fill_in :review_username, with: username
+        fill_in :review_rating, with: rating
+        fill_in :review_title, with: title
+        fill_in :review_description, with: description
+        click_on 'Create Review'
+
+        fill_in :review_rating, with: 5
+        click_on 'Create Review'
+        review = Review.last
+
+        expect(current_path).to eq(book_path(@book_1))
+
+        within "#review-#{review.id}" do
+          expect(page).to have_content(@username)
+          expect(page).to have_content("#{@rating}/5")
+          expect(page).to have_content(@title)
+          expect(page).to have_content(@description)
+        end
+      end
+
       it 'converts username to titlecase before saving' do
         username = 'john doe'
         rating = 5
