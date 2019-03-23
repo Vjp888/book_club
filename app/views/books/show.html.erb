@@ -20,8 +20,8 @@
       </section>
 
       <section class="bottom-reviews">
-        <p>Bottome Reviews</p>
-        <%= @book.grab_reviews('bottom', 3).each do |review| %>
+        <p>Bottom Reviews</p>
+        <% @book.grab_reviews('bottom', 3).each do |review| %>
           <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_index_path(review.username) %></p>
         <% end %>
       <% else %>

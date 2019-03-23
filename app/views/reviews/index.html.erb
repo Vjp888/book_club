@@ -2,8 +2,8 @@
 
 <% @reviews.each do |review|%>
 <section id="review-<%= review.id %>">
-  <img src="<%= review.book.thumbnail %>" alt="cover on <%= review.book.title %>">
-  <p>Title of Book: <%= review.book.title %></p>
+  <a href=<%= book_path(review.book) %>><img src="<%= review.book.thumbnail %>" alt="cover of <%= review.book.title %>"></a>
+  <p>Title of Book: <%= link_to review.book.title, book_path(review.book) %></p>
   <p>Title: <%= review.title %></p>
   <p>Description: <%= review.description %></p>
   <p>Rating: <%= review.rating %> out of 5</p>
