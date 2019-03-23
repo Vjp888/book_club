@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'As a visitor', type: :feature do
+RSpec.describe 'As a visitor to an author show page', type: :feature do
   it 'shows all books by that author' do
     author = Author.create(name: 'Bob')
     book_1 = author.books.create(thumbnail: 'steve.jpg', title: 'book title 1', pages: 40, year_published: 1987)
@@ -58,6 +58,21 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to_not have_content("Bob")
       expect(page).to have_link("Monkey")
       expect(page).to have_link("Steve")
+    end
+  end
+
+  it 'shows co authors as links to their author show page' do
+    author = Author.create(name: 'Bob')
+    author_2 = Author.create(name: 'Monkey')
+    author_3 = Author.create(name: 'Steve')
+    book_1 = author.books.create(thumbnail: 'steve.jpg', title: 'book title 1', pages: 40, year_published: 1987)
+    book_2 = Book.create(thumbnail: 'andrew.jpg', title: 'book title 2', pages: 456, year_published: 1978, authors: [author, author_2, author_3])
+
+    visit author_path(author)
+
+    within "#book-#{book_2.id}" do
+      expect(page).to have_link("Monkey", href: author_path(author_2))
+      expect(page).to have_link("Steve", href: author_path(author_3))
     end
   end
 end
