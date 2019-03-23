@@ -3,14 +3,14 @@
 </section>
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
-    <img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>">
-    <p>Title: <%= book.title %> </p>
+    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>"></a>
+    <p>Title: <%= link_to book.title, book_path(book) %> </p>
     <p>Page Count: <%= book.pages %> </p>
     <p>Year Published: <%= book.year_published %> </p>
     <p>Author(s):</p>
     <ul>
     <% book.authors.each do |author| %>
-      <li><%= link_to author.name %></li>
+      <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
     </ul>
     <p>Average rating: <%= book.average_rating %> out of 5</p>
