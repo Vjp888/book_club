@@ -14,7 +14,7 @@
     <% unless @book.reviews.empty? %>
       <section class="top-reviews">
         <p>Top Reviews</p>
-        <%= @book.grab_reviews('top', 3).each do |review| %>
+        <% @book.grab_reviews('top', 3).each do |review| %>
           <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_index_path(review.username) %></p>
         <% end %>
       </section>
