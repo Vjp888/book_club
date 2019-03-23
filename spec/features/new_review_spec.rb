@@ -56,5 +56,61 @@ RSpec.describe 'Adding new review to book', type: :feature do
         end
       end
     end
+
+    describe 'Sad path' do
+      before :each do
+        @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Gone with the wind', pages: 40, year_published: 1987)
+        visit new_book_review_path(@book_1)
+      end
+
+      it 'when I click submit without any form information filled, it renders the form with error messages' do
+        click_on 'Create Review'
+
+        expect(current_path).to eq(book_reviews_path(@book_1))
+        expect(page).to have_content('Rating is not a number')
+        expect(page).to have_content("Rating can't be blank")
+        expect(page).to have_content("Title can't be blank")
+        expect(page).to have_content("Description can't be blank")
+        expect(page).to have_content("Username can't be blank")
+      end
+
+      it 'when I enter an invalid rating, it shows an error message and rerenders the form' do
+        username = 'User1'
+        rating = 10
+        title = 'Great book'
+        description = 'I loved this book!'
+
+        fill_in :review_username, with: username
+        fill_in :review_rating, with: rating
+        fill_in :review_title, with: title
+        fill_in :review_description, with: description
+
+        click_on 'Create Review'
+
+        expect(current_path).to eq(book_reviews_path(@book_1))
+        expect(page).to have_content("Rating must be less than or equal to 5")
+      end
+
+      it 'converts username to titlecase before saving' do
+        username = 'john doe'
+        rating = 5
+        title = 'Great book'
+        description = 'I loved this book!'
+
+        fill_in :review_username, with: username
+        fill_in :review_rating, with: rating
+        fill_in :review_title, with: title
+        fill_in :review_description, with: description
+
+        click_on 'Create Review'
+        review = Review.last
+
+        expect(review.username).to eq(username.titleize)
+
+        within "#review-#{review.id}" do
+          expect(page).to have_content('John Doe')
+        end
+      end
+    end
   end
 end
