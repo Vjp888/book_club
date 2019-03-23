@@ -10,7 +10,7 @@
     <p>Author(s):</p>
     <ul>
     <% book.authors.each do |author| %>
-      <li><%= link_to author.name %></li>
+      <li><%= link_to author.name, author_path(author) %></li>
     <% end %>
     </ul>
     <p>Average rating: <%= book.average_rating %> out of 5</p>
