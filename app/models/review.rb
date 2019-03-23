@@ -8,4 +8,12 @@ class Review < ApplicationRecord
                         :title,
                         :description,
                         :username
+
+  def self.most_active_users
+    group(:username)
+    .order("count_all desc", username: :desc)
+    .limit(3)
+    .count
+    .map { |username, rating| [username, rating] }
+  end
 end
