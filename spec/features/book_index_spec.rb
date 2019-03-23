@@ -15,7 +15,7 @@ RSpec.describe 'Book index', type: :feature do
       expect(page).to have_link("where the wild things are", href: book_path(book_1))
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: 1987")
-      expect(page).to have_link(author.name)
+      expect(page).to have_link(author.name, href: author_path(author))
     end
 
     within "#book-#{book_2.id}" do
@@ -23,7 +23,7 @@ RSpec.describe 'Book index', type: :feature do
       expect(page).to have_link("Whatever", href: book_path(book_2))
       expect(page).to have_content("Page Count: 230")
       expect(page).to have_content("Year Published: 2019")
-      expect(page).to have_link("bob")
+      expect(page).to have_link("bob", href: author_path(author))
     end
 
     within "#book-#{book_3.id}" do
@@ -31,8 +31,8 @@ RSpec.describe 'Book index', type: :feature do
       expect(page).to have_link("meh", href: book_path(book_3))
       expect(page).to have_content("Page Count: 456")
       expect(page).to have_content("Year Published: 1978")
-      expect(page).to have_link("bob")
-      expect(page).to have_link("monkey")
+      expect(page).to have_link("bob", href: author_path(author))
+      expect(page).to have_link("monkey", href: author_path(author_2))
     end
   end
 
