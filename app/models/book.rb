@@ -33,21 +33,17 @@ class Book < ApplicationRecord
 
   def self.top_three_rated
     joins(:reviews)
-    .group(:title)
-    .order("average_rating desc")
+    .select('AVG(reviews.rating) as average_rating, books.*')
+    .group(:id)
+    .order('average_rating desc')
     .limit(3)
-    .average(:rating)
-    .map { |book| Book.where(title: book.first) }
-    .flatten
   end
 
   def self.bottom_three_rated
     joins(:reviews)
-    .group(:title)
-    .order("average_rating asc")
+    .select('AVG(reviews.rating) as average_rating, books.*')
+    .group(:id)
+    .order('average_rating asc')
     .limit(3)
-    .average(:rating)
-    .map { |book| Book.where(title: book.first) }
-    .flatten
   end
 end
