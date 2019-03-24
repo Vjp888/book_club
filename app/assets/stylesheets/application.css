@@ -49,3 +49,12 @@ nav li a:hover {
 #welcome-content li {
   padding-bottom: 10px;
 }
+
+#book-statistics {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-statistics-card {
+  flex: 0 1 30%;
+}
