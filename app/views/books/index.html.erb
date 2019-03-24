@@ -21,7 +21,7 @@
     <h3>Most active users</h3>
     <ul>
       <% @reviews.most_active_users.each do |user| %>
-        <li><%= link_to user.username, user_path(user) %> (<%= user.review_count %>)</li>
+        <li><%= link_to user.username, user_path(@reviews.find_review(user.username)) %> (<%= user.review_count %>)</li>
       <% end %>
     </ul>
   </section>
