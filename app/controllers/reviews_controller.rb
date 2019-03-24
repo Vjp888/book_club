@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
 
   def show
     review = Review.find(params[:id])
-    # binding.pry
     @reviews = Review.where(username: review.username)
     @user = @reviews.first.username
   end
