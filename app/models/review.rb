@@ -10,10 +10,9 @@ class Review < ApplicationRecord
                         :username
 
   def self.most_active_users
-    group(:username)
-    .order("count_all desc", username: :desc)
+    select('COUNT(reviews.username) as review_count, reviews.username')
+    .group(:username)
+    .order('review_count desc, reviews.username desc')
     .limit(3)
-    .count
-    .map { |username, rating| [username, rating] }
   end
 end
