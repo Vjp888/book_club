@@ -15,4 +15,8 @@ class Review < ApplicationRecord
     .order('review_count desc, reviews.username desc')
     .limit(3)
   end
+
+  def self.find_review(user_name)
+    where(username: user_name).first
+  end
 end
