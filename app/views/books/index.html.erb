@@ -3,7 +3,7 @@
     <h3>Highest rated books</h3>
     <ul>
       <% @books.top_three_rated.each do |book|%>
-        <li><%= book.title %> (<%= book.average_rating.round(1) %> / 5)</li>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
       <% end %>
     </ul>
   </section>
@@ -12,7 +12,7 @@
     <h3>Lowest rated books</h3>
     <ul>
       <% @books.bottom_three_rated.each do |book|%>
-        <li><%= book.title %> (<%= book.average_rating.round(1) %> / 5)</li>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
       <% end %>
     </ul>
   </section>
