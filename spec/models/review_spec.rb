@@ -36,13 +36,15 @@ RSpec.describe Review, type: :model do
         @book_5.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
         @book_5.reviews.create(rating: 5, title: 'Review_title', description: 'Review_description', username: 'User4')
 
-        expected = [
-          ['User3', 3],
-          ['User4', 2],
-          ['User2', 2]
-        ]
+        active_users = Review.most_active_users
 
-        expect(Review.most_active_users).to eq(expected)
+        expect(active_users[0].username).to eq('User3')
+        expect(active_users[1].username).to eq('User4')
+        expect(active_users[2].username).to eq('User2')
+
+        expect(active_users[0].review_count).to eq(3)
+        expect(active_users[1].review_count).to eq(2)
+        expect(active_users[2].review_count).to eq(2)
       end
     end
   end
