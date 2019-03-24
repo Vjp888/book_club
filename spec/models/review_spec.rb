@@ -47,5 +47,13 @@ RSpec.describe Review, type: :model do
         expect(active_users[2].review_count).to eq(2)
       end
     end
+    describe '.find_review' do
+      it 'returns the first review by a username' do
+        book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Book 1 title', pages: 40, year_published: 1987)
+        review_1 = book_1.reviews.create(rating: 1, title: 'Review_title', description: 'Review_description', username: 'User1')
+
+        expect(Review.find_review(review_1.username)).to eq(review_1)
+      end
+    end
   end
 end
