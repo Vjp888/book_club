@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.where(username: params[:user])
+  def show
+    review = Review.find(params[:id])
+    @reviews = Review.where(username: review.username)
     @user = @reviews.first.username
   end
-  
+
   def new
     @book = Book.find(params[:book_id])
     @review = Review.new

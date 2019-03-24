@@ -11,10 +11,10 @@ RSpec.describe "A visitor clicks a username link", type: :feature do
     book.reviews.create(rating: 1, title: "super bad", description: "stevens two", username: "rude")
   end
   it 'Redirects them to the user show page' do
-    visit user_index_path(user: "bob")
+    visit user_path(@review_1)
 
     expect(page).to have_content("bob")
-    
+
     within "#review-#{@review_1.id}" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
       expect(page).to have_content("Title: meh")

@@ -21,7 +21,7 @@
     <ul>
       <li>Title: <%= review.title %></li>
       <li>Rating: <%= review.rating %> out of 5</li>
-      <li>User: <%= link_to review.username%> <%#, user_index_path(review.username) %>  </li>
+      <li>User: <%= link_to review.username, user_path(review) %>  </li>
     </ul>
     <% end %>
   </section>
