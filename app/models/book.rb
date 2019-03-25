@@ -35,14 +35,14 @@ class Book < ApplicationRecord
     case direction
     when "top"
       self.left_outer_joins(:reviews)
-          .select('books.*, avg(reviews.rating) as average_rating')
+          .select('books.*, avg(reviews.rating) as rating_average')
           .group(:id)
-          .order('average_rating DESC nulls last')
+          .order('rating_average DESC nulls last')
     when "bottom"
       self.left_outer_joins(:reviews)
-          .select('books.*, avg(reviews.rating) as average_rating')
+          .select('books.*, avg(reviews.rating) as rating_average')
           .group(:id)
-          .order('average_rating ASC nulls last')
+          .order('rating_average ASC nulls last')
     end
   end
 
@@ -88,22 +88,22 @@ class Book < ApplicationRecord
       self.all
     end
   end
-  
+
   def self.top_three_rated
     # add argument of limit, order to dry this up
     # rename method
     joins(:reviews)
-    .select('AVG(reviews.rating) as average_rating, books.*')
+    .select('AVG(reviews.rating) as avg_rating, books.*')
     .group(:id)
-    .order('average_rating desc')
+    .order('avg_rating desc')
     .limit(3)
   end
 
   def self.bottom_three_rated
     joins(:reviews)
-    .select('AVG(reviews.rating) as average_rating, books.*')
+    .select('AVG(reviews.rating) as avg_rating, books.*')
     .group(:id)
-    .order('average_rating asc')
+    .order('avg_rating asc')
     .limit(3)
   end
 end
