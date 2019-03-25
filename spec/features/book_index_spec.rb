@@ -77,6 +77,55 @@ RSpec.describe 'Book index', type: :feature do
     end
   end
 
+  it 'lets a user sort the book index page' do
+    author = Author.create(name: "Rickey Bobby")
+    book_2 = Book.create(title: "book title 2", pages: 200, year_published: 1867, thumbnail: "steve.jp", authors: [author])
+    book_1 = Book.create(title: "book title 1", pages: 100, year_published: 1980, thumbnail: "steve.jpg", authors: [author])
+    book_1.reviews.create(title: "fantastic", description: "asdafd", rating: 5, username: 'bob')
+    book_1.reviews.create(title: "horrible", description: "cdsubnvfkdf", rating: 1, username: 'bob')
+    book_1.reviews.create(title: "meh", description: "meh", rating: 3, username: 'bob')
+    book_2.reviews.create(title: "stupendous", description: "really", rating: 5, username: 'bob')
+    book_2.reviews.create(title: "alright", description: "kinda", rating: 4, username: 'bob')
+
+    visit books_path
+
+    within '#sort-nav' do
+      click_link 'Top Reviews'
+    end
+    expect(page.all('.book-card')[0]).to have_content("book title 2")
+    expect(page.all('.book-card')[1]).to have_content("book title 1")
+
+    within '#sort-nav' do
+      click_link "Bottom Reviews"
+    end
+      expect(page.all('.book-card')[0]).to have_content("book title 1")
+      expect(page.all('.book-card')[1]).to have_content("book title 2")
+
+    within '#sort-nav' do
+      click_link "Most Pages"
+    end
+      expect(page.all('.book-card')[0]).to have_content("book title 2")
+      expect(page.all('.book-card')[1]).to have_content("book title 1")
+
+    within '#sort-nav' do
+      click_link "Least Pages"
+    end
+      expect(page.all('.book-card')[0]).to have_content("book title 1")
+      expect(page.all('.book-card')[1]).to have_content("book title 2")
+
+    within '#sort-nav' do
+      click_link "Most Reviews"
+    end
+      expect(page.all('.book-card')[0]).to have_content("book title 1")
+      expect(page.all('.book-card')[1]).to have_content("book title 2")
+
+    within '#sort-nav' do
+      click_link "Least Reviews"
+    end
+      expect(page.all('.book-card')[0]).to have_content("book title 2")
+      expect(page.all('.book-card')[1]).to have_content("book title 1")
+  end
+
   describe 'book statistics section' do
     before :each do
       @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Book 1 title', pages: 40, year_published: 1987)

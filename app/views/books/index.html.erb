@@ -1,3 +1,12 @@
+<section id="sort-nav">
+  <%= link_to "Top Reviews", books_path(sorting_params: :top_reviews) %>
+  <%= link_to "Bottom Reviews", books_path(sorting_params: :bottom_reviews) %>
+  <%= link_to "Most Pages", books_path(sorting_params: :most_pages) %>
+  <%= link_to "Least Pages", books_path(sorting_params: :least_pages) %>
+  <%= link_to "Most Reviews", books_path(sorting_params: :most_reviews) %>
+  <%= link_to "Least Reviews", books_path(sorting_params: :least_reviews) %>
+</section>
+
 <section id="book-statistics">
   <section class="book-statistics-card" id="highest-rated-books">
     <h3>Highest rated books</h3>
@@ -30,6 +39,7 @@
 <section class="secondary-nav">
   <%= link_to "Add a Book", new_book_path %>
 </section>
+
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
     <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>"></a>
@@ -45,4 +55,5 @@
     <p>Average rating: <%= book.average_rating %> out of 5</p>
     <p>Total reviews: <%= book.review_count %></p>
   </section>
-<% end %>
+  <% end %>
+</section>
