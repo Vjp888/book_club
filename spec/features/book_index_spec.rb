@@ -92,14 +92,14 @@ RSpec.describe 'Book index', type: :feature do
     within '#sort-nav' do
       click_link 'Top Reviews'
     end
-    expect(page.all('.book-card')[0]).to have_content("book title 1")
-    expect(page.all('.book-card')[1]).to have_content("book title 2")
+    expect(page.all('.book-card')[0]).to have_content("book title 2")
+    expect(page.all('.book-card')[1]).to have_content("book title 1")
 
     within '#sort-nav' do
       click_link "Bottom Reviews"
     end
-      expect(page.all('.book-card')[0]).to have_content("book title 2")
-      expect(page.all('.book-card')[1]).to have_content("book title 1")
+      expect(page.all('.book-card')[0]).to have_content("book title 1")
+      expect(page.all('.book-card')[1]).to have_content("book title 2")
 
     within '#sort-nav' do
       click_link "Most Pages"
