@@ -1,19 +1,29 @@
-<section class="secondary-nav">
+<section id="sort-nav">
+  <%= link_to "Top Reviews", books_path(sorting_params: :top_reviews) %>
+  <%= link_to "Bottom Reviews", books_path(sorting_params: :bottom_reviews) %>
+  <%= link_to "Most Pages", books_path(sorting_params: :most_pages) %>
+  <%= link_to "Least Pages", books_path(sorting_params: :least_pages) %>
+  <%= link_to "Most Reviews", books_path(sorting_params: :most_reviews) %>
+  <%= link_to "Least Reviews", books_path(sorting_params: :least_reviews) %>
+</section>
+<section class="add-book-nav">
   <%= link_to "Add a Book", new_book_path %>
 </section>
-<% @books.each do |book| %>
-  <section id="book-<%= book.id %>">
+<section class="books-container">
+  <% @books.each do |book| %>
+  <section class="book-card" id="book-<%= book.id %>">
     <img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>">
     <p>Title: <%= book.title %> </p>
     <p>Page Count: <%= book.pages %> </p>
     <p>Year Published: <%= book.year_published %> </p>
     <p>Author(s):</p>
     <ul>
-    <% book.authors.each do |author| %>
+      <% book.authors.each do |author| %>
       <li><%= link_to author.name %></li>
-    <% end %>
+      <% end %>
     </ul>
     <p>Average rating: <%= book.average_rating %> out of 5</p>
     <p>Total reviews: <%= book.review_count %></p>
   </section>
-<% end %>
+  <% end %>
+</section>
