@@ -19,4 +19,15 @@ class Review < ApplicationRecord
   def self.find_review(user_name)
     where(username: user_name).first
   end
+
+  def self.sort_reviews(username, sort_params = "nothing")
+    case sort_params
+    when "asc"
+      self.where(username: username).order(created_at: :asc)
+    when "desc"
+      self.where(username: username).order(created_at: :desc)
+    else
+      Review.where(username: username)
+    end
+  end
 end

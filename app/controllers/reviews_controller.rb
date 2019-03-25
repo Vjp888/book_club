@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   def show
     review = Review.find(params[:id])
-    @reviews = Review.where(username: review.username)
+    @reviews = Review.sort_reviews(review.username, params[:sort_params])
     @user = review.username
   end
 
