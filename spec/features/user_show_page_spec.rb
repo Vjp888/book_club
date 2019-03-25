@@ -19,7 +19,7 @@ RSpec.describe "A visitor clicks a username link", type: :feature do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
       expect(page).to have_content("Title: meh")
       expect(page).to have_content("Description: whoever")
-      expect(page).to have_content("Rating: 5 out of 5")
+      expect(page).to have_content("Rating: 5 / 5")
       expect(page).to have_content("Title of Book: where the wild things are")
       expect(page).to have_content("Date Reviewed: #{@review_1.created_at.strftime("%m/%d/%Y")}")
       expect(page).to_not have_content("bob")
