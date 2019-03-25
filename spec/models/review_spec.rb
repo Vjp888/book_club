@@ -55,5 +55,22 @@ RSpec.describe Review, type: :model do
         expect(Review.find_review(review_1.username)).to eq(review_1)
       end
     end
+
+    describe '.sort_reviews' do
+      it 'sorts and returns reviews based on given params' do
+        author = Author.create(name: 'bob')
+        book = author.books.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
+        review_1 = book.reviews.create(rating: 5, title: "meh", description: "whoever", username: "bob", created_at: Date.parse("dec 1 2017"))
+        review_2 = book.reviews.create!(rating: 4, title: "haha", description: "whatever", username: "bob", created_at: Date.parse("dec 2 2017"))
+        review_3 = book.reviews.create!(rating: 3, title: "whatever", description: "harmful", username: "bob", created_at: Date.parse("dec 3 2017"))
+        review_4 = book.reviews.create!(rating: 2, title: "is horrible", description: "carmin", username: "bob", created_at: Date.parse("may 4 2017"))
+
+        expect_desc = [review_3, review_2, review_1, review_4]
+        expect_asc = [review_4, review_1, review_2, review_3]
+
+        expect(Review.sort_reviews(review_1.username, "asc")).to eq(expect_asc)
+        expect(Review.sort_reviews(review_1.username, "desc")).to eq(expect_desc)
+      end
+    end
   end
 end
