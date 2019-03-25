@@ -8,5 +8,6 @@
   <p>Description: <%= review.description %></p>
   <p>Rating: <%= review.rating %> out of 5</p>
   <p>Date Reviewed: <%= review.created_at.strftime("%m/%d/%Y") %></p>
+  <%= link_to "Delete Review", review_path, method: :delete %>
 </section>
 <% end %>

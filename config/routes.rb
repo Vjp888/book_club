@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :authors, only: [:show]
 
   resources :reviews, only: [:show], as: 'user'
+  resources :reviews, only: [:destroy]
 end
