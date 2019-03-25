@@ -37,12 +37,12 @@ class Book < ApplicationRecord
       self.left_outer_joins(:reviews)
           .select('books.*, avg(reviews.rating) as average_rating')
           .group(:id)
-          .order('average_rating DESC')
+          .order('average_rating DESC nulls last')
     when "bottom"
       self.left_outer_joins(:reviews)
           .select('books.*, avg(reviews.rating) as average_rating')
           .group(:id)
-          .order('average_rating ASC')
+          .order('average_rating ASC nulls last')
     end
   end
 
