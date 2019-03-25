@@ -23,29 +23,35 @@ RSpec.describe Book, type: :model do
         @author = Author.create(name: "Rickey Bobby")
         @book_2 = Book.create!(title: "book title 2", pages: 200, year_published: 1867, thumbnail: "steve.jpg", authors: [@author])
         @book_1 = Book.create!(title: "book title 1", pages: 100, year_published: 1980, thumbnail: "steve.jpg", authors: [@author])
+        @book_3 = Book.create!(title: "book title 3", pages: 150, year_published: 1980, thumbnail: "steve.jpg", authors: [@author])
         @book_1.reviews.create!(title: "fantastic", description: "asdafd", rating: 5, username: 'bob')
         @book_1.reviews.create!(title: "horrible", description: "cdsubnvfkdf", rating: 1, username: 'bob')
         @book_1.reviews.create!(title: "meh", description: "meh", rating: 1, username: 'bob')
         @book_2.reviews.create!(title: "stupendous", description: "really", rating: 5, username: 'bob')
         @book_2.reviews.create!(title: "alright", description: "kinda", rating: 5, username: 'bob')
-        @sort_1 = [@book_1, @book_2]
-        @sort_2 = [@book_2, @book_1]
+        @sort_1 = [@book_1, @book_2, @book_3]
+        @sort_2 = [@book_2, @book_1, @book_3]
       end
       describe '.sort_books' do
         it 'sorts books by given params' do
+          most_page = [@book_2, @book_3, @book_1]
+          least_page = [@book_1, @book_3, @book_2]
+          least_reviews = [@book_3, @book_2, @book_1]
+          
           expect(Book.sort_books("top_reviews")).to eq(@sort_2)
           expect(Book.sort_books("bottom_reviews")).to eq(@sort_1)
-          expect(Book.sort_books("most_pages")).to eq(@sort_2)
-          expect(Book.sort_books("least_pages")).to eq(@sort_1)
+          expect(Book.sort_books("most_pages")).to eq(most_page)
+          expect(Book.sort_books("least_pages")).to eq(least_page)
           expect(Book.sort_books("most_reviews")).to eq(@sort_1)
-          expect(Book.sort_books("least_reviews")).to eq(@sort_2)
+          expect(Book.sort_books("least_reviews")).to eq(least_reviews)
           expect(Book.sort_books).to eq(Book.all)
         end
       end
       describe '.sort_by_review_count' do
         it 'it sorts books by reviews either asc or desc' do
+          bottom_sort = [@book_3, @book_2, @book_1]
           expect(Book.sort_by_review_count("top")).to eq(@sort_1)
-          expect(Book.sort_by_review_count("bottom")).to eq(@sort_2)
+          expect(Book.sort_by_review_count("bottom")).to eq(bottom_sort)
         end
       end
 
@@ -58,8 +64,10 @@ RSpec.describe Book, type: :model do
 
       describe '.sort_by_page_count' do
         it 'it sorts books by page count either asc or desc' do
-          expect(Book.sort_by_page_count("top")).to eq(@sort_2)
-          expect(Book.sort_by_page_count("bottom")).to eq(@sort_1)
+          sort_1 = [@book_1, @book_3, @book_2]
+          sort_2 = [@book_2, @book_3, @book_1]
+          expect(Book.sort_by_page_count("top")).to eq(sort_2)
+          expect(Book.sort_by_page_count("bottom")).to eq(sort_1)
         end
       end
     end
