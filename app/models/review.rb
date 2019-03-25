@@ -8,4 +8,15 @@ class Review < ApplicationRecord
                         :title,
                         :description,
                         :username
+
+  def self.most_active_users
+    select('COUNT(reviews.username) as review_count, reviews.username')
+    .group(:username)
+    .order('review_count desc, reviews.username desc')
+    .limit(3)
+  end
+
+  def self.find_review(user_name)
+    where(username: user_name).first
+  end
 end

@@ -88,4 +88,20 @@ class Book < ApplicationRecord
       self.all
     end
   end
+  
+  def self.top_three_rated
+    joins(:reviews)
+    .select('AVG(reviews.rating) as average_rating, books.*')
+    .group(:id)
+    .order('average_rating desc')
+    .limit(3)
+  end
+
+  def self.bottom_three_rated
+    joins(:reviews)
+    .select('AVG(reviews.rating) as average_rating, books.*')
+    .group(:id)
+    .order('average_rating asc')
+    .limit(3)
+  end
 end

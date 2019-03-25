@@ -4,7 +4,7 @@
 
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
-    <img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>">
+    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>"></a>
     <p>Title: <%= link_to book.title, book_path(book) %></p>
     <p>Page Count: <%= book.pages %></p>
     <p>Year Published: <%= book.year_published %></p>
@@ -16,5 +16,13 @@
         <% end %>
       </ul>
       <% end %>
+    <p>Top Review:</p>
+    <%book.grab_reviews("top", 1).each do |review| %>
+    <ul>
+      <li>Title: <%= review.title %></li>
+      <li>Rating: <%= review.rating %> out of 5</li>
+      <li>User: <%= link_to review.username, user_path(review) %>  </li>
+    </ul>
+    <% end %>
   </section>
 <% end %>

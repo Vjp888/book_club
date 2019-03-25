@@ -126,4 +126,39 @@ RSpec.describe Book, type: :model do
       end
     end
   end
+
+  describe 'Class Methods' do
+    before :each do
+      @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Book 1 title', pages: 40, year_published: 1987)
+      @book_2 = Book.create(thumbnail: 'steve.jpg', title: 'Book 2 title', pages: 40, year_published: 1987)
+      @book_3 = Book.create(thumbnail: 'steve.jpg', title: 'Book 3 title', pages: 40, year_published: 1987)
+      @book_4 = Book.create(thumbnail: 'steve.jpg', title: 'Book 4 title', pages: 40, year_published: 1987)
+      @book_5 = Book.create(thumbnail: 'steve.jpg', title: 'Book 5 title', pages: 40, year_published: 1987)
+
+      @book_1.reviews.create(rating: 1, title: 'Review_title', description: 'Review_description', username: 'User1')
+
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User2')
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User3')
+
+      @book_3.reviews.create(rating: 3, title: 'Review_title', description: 'Review_description', username: 'User2')
+
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User4')
+
+      @book_5.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_5.reviews.create(rating: 5, title: 'Review_title', description: 'Review_description', username: 'User4')
+    end
+
+    describe '.top_three_rated' do
+      it 'returns the three highest rated books' do
+        expect(Book.top_three_rated).to eq([@book_5, @book_4, @book_3])
+      end
+    end
+
+    describe '.bottom_three_rated' do
+      it 'returns the three lowest rated books' do
+        expect(Book.bottom_three_rated).to eq([@book_1, @book_2, @book_3])
+      end
+    end
+  end
 end

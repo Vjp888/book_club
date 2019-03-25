@@ -12,27 +12,27 @@ RSpec.describe 'Book index', type: :feature do
 
     within "#book-#{book_1.id}" do
       expect(page).to have_xpath("//img[@src='steve.jpg']")
-      expect(page).to have_content("Title: where the wild things are")
+      expect(page).to have_link("where the wild things are", href: book_path(book_1))
       expect(page).to have_content("Page Count: #{book_1.pages}")
       expect(page).to have_content("Year Published: 1987")
-      expect(page).to have_link(author.name)
+      expect(page).to have_link(author.name, href: author_path(author))
     end
 
     within "#book-#{book_2.id}" do
       expect(page).to have_xpath("//img[@src='bob.jpg']")
-      expect(page).to have_content("Title: Whatever")
+      expect(page).to have_link("Whatever", href: book_path(book_2))
       expect(page).to have_content("Page Count: 230")
       expect(page).to have_content("Year Published: 2019")
-      expect(page).to have_link("bob")
+      expect(page).to have_link("bob", href: author_path(author))
     end
 
     within "#book-#{book_3.id}" do
       expect(page).to have_xpath("//img[@src='andrew.jpg']")
-      expect(page).to have_content("Title: meh")
+      expect(page).to have_link("meh", href: book_path(book_3))
       expect(page).to have_content("Page Count: 456")
       expect(page).to have_content("Year Published: 1978")
-      expect(page).to have_link("bob")
-      expect(page).to have_link("monkey")
+      expect(page).to have_link("bob", href: author_path(author))
+      expect(page).to have_link("monkey", href: author_path(author_2))
     end
   end
 
@@ -124,5 +124,54 @@ RSpec.describe 'Book index', type: :feature do
     end
       expect(page.all('.book-card')[0]).to have_content("book title 2")
       expect(page.all('.book-card')[1]).to have_content("book title 1")
+  end
+
+  describe 'book statistics section' do
+    before :each do
+      @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'Book 1 title', pages: 40, year_published: 1987)
+      @book_2 = Book.create(thumbnail: 'steve.jpg', title: 'Book 2 title', pages: 40, year_published: 1987)
+      @book_3 = Book.create(thumbnail: 'steve.jpg', title: 'Book 3 title', pages: 40, year_published: 1987)
+      @book_4 = Book.create(thumbnail: 'steve.jpg', title: 'Book 4 title', pages: 40, year_published: 1987)
+      @book_5 = Book.create(thumbnail: 'steve.jpg', title: 'Book 5 title', pages: 40, year_published: 1987)
+
+      @book_1.reviews.create(rating: 1, title: 'Review_title', description: 'Review_description', username: 'User1')
+
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User2')
+      @book_2.reviews.create(rating: 2, title: 'Review_title', description: 'Review_description', username: 'User3')
+
+      @book_3.reviews.create(rating: 3, title: 'Review_title', description: 'Review_description', username: 'User2')
+
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_4.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User4')
+
+      @book_5.reviews.create(rating: 4, title: 'Review_title', description: 'Review_description', username: 'User3')
+      @book_5.reviews.create(rating: 5, title: 'Review_title', description: 'Review_description', username: 'User4')
+
+      visit books_path
+    end
+
+    it 'shows three of the highest rated books' do
+      within "#highest-rated-books" do
+        expect(page.all('li')[0]).to have_content("#{@book_5.title} (#{@book_5.average_rating} / 5)")
+        expect(page.all('li')[1]).to have_content("#{@book_4.title} (#{@book_4.average_rating} / 5)")
+        expect(page.all('li')[2]).to have_content("#{@book_3.title} (#{@book_3.average_rating} / 5)")
+      end
+    end
+
+    it 'shows three of the worst-rated books' do
+      within "#lowest-rated-books" do
+        expect(page.all('li')[0]).to have_content("#{@book_1.title} (#{@book_1.average_rating} / 5)")
+        expect(page.all('li')[1]).to have_content("#{@book_2.title} (#{@book_2.average_rating} / 5)")
+        expect(page.all('li')[2]).to have_content("#{@book_3.title} (#{@book_3.average_rating} / 5)")
+      end
+    end
+
+    it 'shows three users who have written the most reviews' do
+      within '#most-active-users' do
+        expect(page.all('li')[0]).to have_content("User3 (3)")
+        expect(page.all('li')[1]).to have_content("User4 (2)")
+        expect(page.all('li')[2]).to have_content("User2 (2)")
+      end
+    end
   end
 end

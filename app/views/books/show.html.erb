@@ -7,31 +7,32 @@
   <p>Author(s):</p>
   <ul class="authors">
   <% @book.authors.each do |author| %>
-    <li><%= link_to author.name %></li>
+    <li><%= link_to author.name, author_path(author) %></li>
   <% end %>
   </ul>
   <section class="book-stats">
     <% unless @book.reviews.empty? %>
       <section class="top-reviews">
         <p>Top Reviews</p>
-        <%= @book.grab_reviews('top', 3).each do |review| %>
-          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+        <% @book.grab_reviews('top', 3).each do |review| %>
+          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_path(review) %></p>
         <% end %>
       </section>
 
       <section class="bottom-reviews">
-        <p>Bottome Reviews</p>
-        <%= @book.grab_reviews('bottom', 3).each do |review| %>
-          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username %></p>
+        <p>Bottom Reviews</p>
+        <% @book.grab_reviews('bottom', 3).each do |review| %>
+          <p>Title: <%= review.title %>, Rating: <%= review.rating %>, User: <%= link_to review.username, user_path(review.username) %></p>
         <% end %>
       <% else %>
-        <%= link_to "Be the first to review this book"  %>
+        <%= link_to "Be the first to review this book", new_book_review_path(@book) %>
       <% end %>
     </section>
   </section>
 </section>
 
 <section class="reviews">
+  <%= link_to 'Add review', new_book_review_path(@book) %>
   <% @book.reviews.each do |review| %>
     <article class="review" id="review-<%= review.id %>">
       <p><%= review.username %></p>

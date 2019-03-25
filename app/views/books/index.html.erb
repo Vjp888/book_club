@@ -6,21 +6,51 @@
   <%= link_to "Most Reviews", books_path(sorting_params: :most_reviews) %>
   <%= link_to "Least Reviews", books_path(sorting_params: :least_reviews) %>
 </section>
-<section class="add-book-nav">
+
+<section id="book-statistics">
+  <section class="book-statistics-card" id="highest-rated-books">
+    <h3>Highest rated books</h3>
+    <ul>
+      <% @books.top_three_rated.each do |book|%>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="book-statistics-card" id="lowest-rated-books">
+    <h3>Lowest rated books</h3>
+    <ul>
+      <% @books.bottom_three_rated.each do |book|%>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="book-statistics-card" id="most-active-users">
+    <h3>Most active users</h3>
+    <ul>
+      <% @reviews.most_active_users.each do |user| %>
+        <li><%= link_to user.username, user_path(@reviews.find_review(user.username)) %> (<%= user.review_count %>)</li>
+      <% end %>
+    </ul>
+  </section>
+</section>
+
+<section class="secondary-nav">
   <%= link_to "Add a Book", new_book_path %>
 </section>
-<section class="books-container">
-  <% @books.each do |book| %>
-  <section class="book-card" id="book-<%= book.id %>">
-    <img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>">
-    <p>Title: <%= book.title %> </p>
+
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>">
+    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>"></a>
+    <p>Title: <%= link_to book.title, book_path(book) %> </p>
     <p>Page Count: <%= book.pages %> </p>
     <p>Year Published: <%= book.year_published %> </p>
     <p>Author(s):</p>
     <ul>
-      <% book.authors.each do |author| %>
-      <li><%= link_to author.name %></li>
-      <% end %>
+    <% book.authors.each do |author| %>
+      <li><%= link_to author.name, author_path(author) %></li>
+    <% end %>
     </ul>
     <p>Average rating: <%= book.average_rating %> out of 5</p>
     <p>Total reviews: <%= book.review_count %></p>
