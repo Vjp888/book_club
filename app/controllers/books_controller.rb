@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = Book.sort_books(params[:sorting_params])
+    @books_all = Book.all
     @reviews = Review.all
   end
 

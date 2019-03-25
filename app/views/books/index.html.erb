@@ -11,8 +11,8 @@
   <section class="book-statistics-card" id="highest-rated-books">
     <h3>Highest rated books</h3>
     <ul>
-      <% @books.top_three_rated.each do |book|%>
-        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% @books_all.top_three_rated.each do |book|%>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.avg_rating.round(1) %> / 5)</li>
       <% end %>
     </ul>
   </section>
@@ -20,8 +20,8 @@
   <section class="book-statistics-card" id="lowest-rated-books">
     <h3>Lowest rated books</h3>
     <ul>
-      <% @books.bottom_three_rated.each do |book|%>
-        <li><%= link_to book.title, book_path(book) %> (<%= book.average_rating.round(1) %> / 5)</li>
+      <% @books_all.bottom_three_rated.each do |book|%>
+        <li><%= link_to book.title, book_path(book) %> (<%= book.avg_rating.round(1) %> / 5)</li>
       <% end %>
     </ul>
   </section>
@@ -41,7 +41,7 @@
 </section>
 
 <% @books.each do |book| %>
-  <section id="book-<%= book.id %>">
+  <section class='book-card' id="book-<%= book.id %>">
     <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>"></a>
     <p>Title: <%= link_to book.title, book_path(book) %> </p>
     <p>Page Count: <%= book.pages %> </p>
