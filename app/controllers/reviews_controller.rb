@@ -22,6 +22,21 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    review = Review.find(params[:id])
+    book = review.book
+    user = review.username
+    review.destroy
+
+    other_user_review = Review.find_review(user)
+
+    if other_user_review
+      redirect_to(user_path(other_user_review))
+    else
+      redirect_to(books_path)
+    end
+  end
+
   private
 
   def review_params
