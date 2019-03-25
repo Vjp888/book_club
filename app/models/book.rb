@@ -12,7 +12,11 @@ class Book < ApplicationRecord
                         :year_published
 
   def average_rating
-    reviews.average(:rating)
+    if reviews.count > 0
+      reviews.average(:rating)
+    else
+      0
+    end
   end
 
   def review_count
