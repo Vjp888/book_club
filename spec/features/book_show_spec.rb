@@ -39,14 +39,14 @@ RSpec.describe 'Book Show Page', type: :feature do
 
     within "#review-#{review_1.id}" do
       expect(page).to have_content("User1")
-      expect(page).to have_content("5/5")
+      expect(page).to have_content("5 / 5")
       expect(page).to have_content("Great book")
       expect(page).to have_content("This book was great!")
     end
 
     within "#review-#{review_2.id}" do
       expect(page).to have_content("User2")
-      expect(page).to have_content("2/5")
+      expect(page).to have_content("2 / 5")
       expect(page).to have_content("Not great")
       expect(page).to have_content("This book was bad.")
     end

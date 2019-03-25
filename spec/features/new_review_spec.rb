@@ -49,7 +49,7 @@ RSpec.describe 'Adding new review to book', type: :feature do
           review_1 = Review.last
           within "#review-#{review_1.id}" do
             expect(page).to have_content(@username)
-            expect(page).to have_content("#{@rating}/5")
+            expect(page).to have_content("#{@rating} / 5")
             expect(page).to have_content(@title)
             expect(page).to have_content(@description)
           end
@@ -111,7 +111,7 @@ RSpec.describe 'Adding new review to book', type: :feature do
 
         within "#review-#{review.id}" do
           expect(page).to have_content(@username)
-          expect(page).to have_content("#{@rating}/5")
+          expect(page).to have_content("#{@rating} / 5")
           expect(page).to have_content(@title)
           expect(page).to have_content(@description)
         end
