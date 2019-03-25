@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   def show
     review = Review.find(params[:id])
     @reviews = Review.where(username: review.username)
-    @user = @reviews.first.username
+    @user = review.username
   end
 
   def new
