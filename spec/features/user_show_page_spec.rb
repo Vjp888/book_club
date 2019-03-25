@@ -35,15 +35,16 @@ RSpec.describe "A visitor clicks a username link", type: :feature do
         expect(page).to have_link("Sort by Date(asc)")
         expect(page).to have_link("Sort by Date(desc)")
       end
+
       click_link 'Sort by Date(asc)'
-      expect(page.all('.review-info')[0]).to have_content("super bad")
+      expect(page.all('.review-info')[0]).to have_content("whoever")
       expect(page.all('.review-info')[0]).to_not have_content("whatever")
-      expect(page.all('.review-info')[3]).to have_content("meh")
+      expect(page.all('.review-info')[1]).to have_content("whatever")
 
       click_link 'Sort by Date(desc)'
       expect(page.all('.review-info')[0]).to have_content("whatever")
-      expect(page.all('.review-info')[0]).to_not have_content("is horrible")
-      expect(page.all('.review-info')[3]).to have_content("meh")
+      expect(page.all('.review-info')[0]).to_not have_content("whoever")
+      expect(page.all('.review-info')[1]).to have_content("whoever")
     end
   end
 end
