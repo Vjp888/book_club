@@ -30,4 +30,62 @@ class Book < ApplicationRecord
       self.reviews.order(rating: :asc, username: :desc).limit(limit)
     end
   end
+
+  def self.sort_by_avg_rating(direction)
+    case direction
+    when "top"
+      self.left_outer_joins(:reviews)
+          .select('books.*, avg(reviews.rating) as average_rating')
+          .group(:id)
+          .order('average_rating DESC')
+    when "bottom"
+      self.left_outer_joins(:reviews)
+          .select('books.*, avg(reviews.rating) as average_rating')
+          .group(:id)
+          .order('average_rating ASC')
+    end
+  end
+
+  def self.sort_by_review_count(direction)
+    case direction
+    when "top"
+      self.left_outer_joins(:reviews)
+          .select('books.*, count(reviews) as review_count')
+          .group(:id)
+          .order('review_count DESC')
+    when "bottom"
+      self.left_outer_joins(:reviews)
+          .select('books.*, count(reviews) as review_count')
+          .group(:id)
+          .order('review_count ASC')
+    end
+  end
+
+  def self.sort_by_page_count(direction)
+    case direction
+    when "top"
+      self.order(pages: :desc)
+    when "bottom"
+      self.order(pages: :asc)
+    end
+  end
+
+  def self.sort_books(sort_param = "nothing")
+    case sort_param
+    when "top_reviews"
+      self.sort_by_avg_rating("top")
+    when "bottom_reviews"
+      self.sort_by_avg_rating("bottom")
+    when "most_pages"
+      self.sort_by_page_count('top')
+    when "least_pages"
+      self.sort_by_page_count("bottom")
+    when "most_reviews"
+      self.sort_by_review_count("top")
+    when "least_reviews"
+      self.sort_by_review_count("bottom")
+    else
+      self.all
+    end
+  end
 end
