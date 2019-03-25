@@ -37,7 +37,7 @@ RSpec.describe Book, type: :model do
           most_page = [@book_2, @book_3, @book_1]
           least_page = [@book_1, @book_3, @book_2]
           least_reviews = [@book_3, @book_2, @book_1]
-          
+
           expect(Book.sort_books("top_reviews")).to eq(@sort_2)
           expect(Book.sort_books("bottom_reviews")).to eq(@sort_1)
           expect(Book.sort_books("most_pages")).to eq(most_page)
@@ -77,6 +77,7 @@ RSpec.describe Book, type: :model do
     describe 'review ratings and counts' do
       before(:each) do
         @book_1 = Book.create(thumbnail: 'steve.jpg', title: 'where the wild things are', pages: 40, year_published: 1987)
+        @book_2 = Book.create(thumbnail: 'steve.jpg', title: 'Book 2 title', pages: 40, year_published: 1987)
         @book_1.reviews.create(rating: 5, title: 'Review_1_title', description: 'Review_1_description', username: 'Review_1_username')
         @book_1.reviews.create(rating: 4, title: 'Review_2_title', description: 'Review_2_description', username: 'Review_2_username')
       end
@@ -84,6 +85,10 @@ RSpec.describe Book, type: :model do
       context '.average_rating' do
         it 'returns the average rating of all reviews for the book' do
           expect(@book_1.average_rating).to eq(4.5)
+        end
+
+        it 'returns 0 if there are no reviews for the book' do
+          expect(@book_2.average_rating).to eq(0)
         end
       end
 
