@@ -8,7 +8,7 @@ RSpec.describe 'As a user', type: :feature do
 
     expect(current_path).to eq(new_book_path)
 
-    fill_in 'Title', with: 'book 1'
+    fill_in 'Title', with: 'Book 1'
     fill_in 'Pages', with: '1234'
     fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
@@ -18,7 +18,7 @@ RSpec.describe 'As a user', type: :feature do
     book = Book.last
 
     expect(current_path).to eq(book_path(book))
-    expect(page).to have_content("Title: book 1")
+    expect(page).to have_content("Title: Book 1")
     expect(page).to have_content("Page Count: 1234")
     expect(page).to have_content("Year Published: 1948")
     within '.authors' do
@@ -29,7 +29,7 @@ RSpec.describe 'As a user', type: :feature do
 
   it 'Will not create book if title is not unique' do
     author = Author.create(name: 'bobby')
-    author.books.create(title: 'book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
+    author.books.create(title: 'Book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
 
     visit books_path
 
@@ -37,7 +37,7 @@ RSpec.describe 'As a user', type: :feature do
 
     expect(current_path).to eq(new_book_path)
 
-    fill_in 'Title', with: 'book 1'
+    fill_in 'Title', with: 'Book 1'
     fill_in 'Pages', with: '1234'
     fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
@@ -46,11 +46,11 @@ RSpec.describe 'As a user', type: :feature do
     click_button 'Create Book'
 
     expect(page).to have_field('Title')
-    expect(page).to_not have_content('book 1')
+    expect(page).to_not have_content('Book 1')
   end
 
   it 'Author name is unique' do
-    author = Author.create(name: 'bobby')
+    author = Author.create(name: 'Bobby')
     author.books.create(title: 'book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
 
     visit books_path
@@ -63,7 +63,7 @@ RSpec.describe 'As a user', type: :feature do
     fill_in 'Pages', with: '1234'
     fill_in 'Year published', with: '1948'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
-    fill_in 'author_list', with: 'bobby'
+    fill_in 'author_list', with: 'Bobby'
 
     click_button 'Create Book'
 
@@ -92,7 +92,7 @@ RSpec.describe 'As a user', type: :feature do
 
   it 'shows error messages when no info is given' do
     author = Author.create(name: 'bobby')
-    author.books.create(title: 'book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
+    author.books.create(title: 'Book 1', pages: 1234, year_published: 4321, thumbnail: 'steve.jpg')
 
     visit books_path
 
@@ -100,7 +100,7 @@ RSpec.describe 'As a user', type: :feature do
 
     expect(current_path).to eq(new_book_path)
 
-    fill_in 'Title', with: 'book 1'
+    fill_in 'Title', with: 'Book 1'
     fill_in 'Pages', with: '1234'
     fill_in 'Thumbnail', with: 'https://www.libreture.com/static/images/book-placeholder.png'
     fill_in 'author_list', with: 'Steve, bob'
