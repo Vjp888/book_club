@@ -32,6 +32,8 @@ class Book < ApplicationRecord
   end
 
   def self.top_three_rated
+    # add argument of limit, order to dry this up
+    # rename method
     joins(:reviews)
     .select('AVG(reviews.rating) as average_rating, books.*')
     .group(:id)

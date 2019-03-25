@@ -13,7 +13,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
+    # If author list is blank, plus testing - come back to at end
     if @book.save
       params[:author_list].split(',').map do |author|
         @book.authors << Author.find_or_create_by(name: author.titleize.strip)
@@ -30,7 +31,7 @@ class BooksController < ApplicationController
   def book_params
     bp = params.require(:book).permit(:title, :pages, :year_published, :thumbnail)
     bp[:thumbnail] = 'https://www.libreture.com/static/images/book-placeholder.png' unless bp[:thumbnail] != ""
-    bp[:title].titleize
+    bp[:title] = bp[:title].titleize
     bp
   end
 end
