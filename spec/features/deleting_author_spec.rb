@@ -16,7 +16,7 @@ RSpec.describe 'user clicks delete author link', type: :feature do
     click_link 'Delete Author'
 
     expect(current_path).to eq(books_path)
-    
+
     expect(page).to_not have_content(author_1.name)
     expect(page).to_not have_content(book_2.title)
     expect(page).to_not have_content(book_1.title)

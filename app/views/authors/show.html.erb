@@ -1,5 +1,6 @@
 <section class="author-name">
   <p><%= @author.name %></p>
+  <%= link_to "Delete Author", author_path(@author), method: :delete %>
 </section>
 
 <% @books.each do |book| %>
