@@ -15,12 +15,12 @@
 
   <p>
     <%= f.label :pages %>
-    <%= f.text_field :pages %>
+    <%= f.number_field :pages, min: 1 %>
   </p>
 
   <p>
     <%= f.label :year_published %>
-    <%= f.text_field :year_published %>
+    <%= f.number_field :year_published, min: 1000 %>
   </p>
 
   <p>

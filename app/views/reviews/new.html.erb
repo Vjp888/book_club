@@ -19,7 +19,7 @@
 
   <p>
     <%= f.label :rating %>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, in: 1..5 %>
   </p>
 
   <p>
