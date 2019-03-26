@@ -31,7 +31,7 @@ RSpec.describe "A visitor clicks a username link", type: :feature do
   describe 'when I view the user showpage' do
     it 'will sort reviews by their date' do
       visit user_path(@review_1)
-      within '#sort-nav' do
+      within '#review-sort' do
         expect(page).to have_link("Sort by Date(asc)")
         expect(page).to have_link("Sort by Date(desc)")
       end

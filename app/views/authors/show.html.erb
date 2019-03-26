@@ -1,29 +1,35 @@
 <section class="author-name">
-  <p><%= @author.name %></p>
-  <%= link_to "Delete Author", author_path(@author), method: :delete %>
+  <h1><%= @author.name %></h1>
+   <%= link_to "Delete Author", author_path(@author), method: :delete %>
 </section>
 
+<section class="author-book-deck">
 <% @books.each do |book| %>
-  <section id="book-<%= book.id %>">
-    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>"></a>
-    <p>Title: <%= link_to book.title, book_path(book) %></p>
-    <p>Page Count: <%= book.pages %></p>
-    <p>Year Published: <%= book.year_published %></p>
+  <section class="author-book-card" id="book-<%= book.id %>">
+    <div class="author-cover">
+      <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="Cover of <%= book.title %>" id="author-cover-image"></a>
+    </div>
+    <div class="author-text-info">
+      <p>Title: <%= link_to book.title, book_path(book) %></p>
+      <p>Page Count: <%= book.pages %></p>
+      <p>Year Published: <%= book.year_published %></p>
       <% if book.authors.count > 1 %>
       <p>Co-Authors:</p>
       <ul>
         <% book.remove_author(@author).each do |author| %>
-          <li><%= link_to author.name, author_path(author) %></li>
+        <li><%= link_to author.name, author_path(author) %></li>
         <% end %>
       </ul>
       <% end %>
-    <p>Top Review:</p>
-    <%book.grab_reviews("top", 1).each do |review| %>
-    <ul>
-      <li>Title: <%= review.title %></li>
-      <li>Rating: <%= review.rating %> out of 5</li>
-      <li>User: <%= link_to review.username, user_path(review) %>  </li>
-    </ul>
+      <p>Top Review:</p>
+      <%book.grab_reviews("top", 1).each do |review| %>
+      <ul>
+        <li>Title: <%= review.title %></li>
+        <li>Rating: <%= review.rating %> out of 5</li>
+        <li>User: <%= link_to review.username, user_path(review) %>  </li>
+      </ul>
+    </div>
     <% end %>
   </section>
 <% end %>
+</section>

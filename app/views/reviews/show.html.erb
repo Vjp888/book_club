@@ -1,17 +1,26 @@
-<h1><%= @user %></h1>
-<section id="sort-nav">
+<section id="review-wrap">
+<div class="user-head">
+  <h1><%= @user %></h1>
+</div>
+<section id="review-sort">
 <%= link_to "Sort by Date(asc)", user_path(@reviews.first, sort_params: :asc) %>
 <%= link_to "Sort by Date(desc)", user_path(@reviews.first, sort_params: :desc) %>
 </section>
 
-<% @reviews.each do |review|%>
-<section class="review-info" id="review-<%= review.id %>">
-  <a href=<%= book_path(review.book) %>><img src="<%= review.book.thumbnail %>" alt="cover of <%= review.book.title %>"></a>
-  <p>Title of Book: <%= link_to review.book.title, book_path(review.book) %></p>
-  <p>Title: <%= review.title %></p>
-  <p>Description: <%= review.description %></p>
-  <p>Rating: <%= review.rating %> / 5</p>
-  <p>Date Reviewed: <%= review.created_at.strftime("%m/%d/%Y") %></p>
-  <%= link_to "Delete Review", review_path, method: :delete %>
+<section class="review-deck">
+  <% @reviews.each do |review|%>
+  <section class="review-info review-card" id="review-<%= review.id %>">
+    <a href=<%= book_path(review.book) %>><img src="<%= review.book.thumbnail %>" alt="cover of <%= review.book.title %>" class="review-image"></a>
+    <div class="review-text">
+      <p><strong>Title of Book:</strong> <%= link_to review.book.title, book_path(review.book) %></p>
+      <p><strong>Title:</strong> <%= review.title %></p>
+      <p><strong>Description:</strong> <%= review.description %></p>
+      <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+      <p><strong>Date Reviewed:</strong> <%= review.created_at.strftime("%m/%d/%Y") %></p>
+      <%= link_to "Delete Review", review_path, method: :delete %>
+    </div>
+  </section>
+  <% end %>
 </section>
-<% end %>
+
+</section>
