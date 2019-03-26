@@ -45,10 +45,15 @@ nav li a:hover {
 
 #welcome-content {
   padding-left: 2%;
+  font-family: sans-serif;
+}
+
+#welcome-content p {
+  margin: 5px;
 }
 
 #welcome-content li {
-  padding-bottom: 10px;
+  margin: 5px;
 }
 
 #book-statistics {
@@ -108,6 +113,20 @@ nav li a:hover {
   height: auto;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+#welcome-content {
+  width: 60%;
+}
+
+#book-logo {
+  height: 50px;
+  width: auto;
+}
+
+#book-logo-li {
+  padding-top: 5px;
+  padding-left: 5px;
 }
 
 .book-information {
