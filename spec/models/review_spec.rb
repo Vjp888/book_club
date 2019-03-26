@@ -67,9 +67,11 @@ RSpec.describe Review, type: :model do
 
         expect_desc = [review_3, review_2, review_1, review_4]
         expect_asc = [review_4, review_1, review_2, review_3]
+        expect_regular = [review_1, review_2, review_3, review_4]
 
         expect(Review.sort_reviews(review_1.username, "asc")).to eq(expect_asc)
         expect(Review.sort_reviews(review_1.username, "desc")).to eq(expect_desc)
+        expect(Review.sort_reviews(review_1.username)).to eq(expect_regular)
       end
     end
   end
