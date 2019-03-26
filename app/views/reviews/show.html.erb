@@ -17,7 +17,7 @@
       <p><strong>Description:</strong> <%= review.description %></p>
       <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
       <p><strong>Date Reviewed:</strong> <%= review.created_at.strftime("%m/%d/%Y") %></p>
-      <%= link_to "Delete Review", review_path, method: :delete %>
+      <%= link_to "Delete Review", review_path(review), method: :delete %>
     </div>
   </section>
   <% end %>
