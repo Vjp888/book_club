@@ -5,6 +5,7 @@
   <%= link_to "Least Pages", books_path(sorting_params: :least_pages) %>
   <%= link_to "Most Reviews", books_path(sorting_params: :most_reviews) %>
   <%= link_to "Least Reviews", books_path(sorting_params: :least_reviews) %>
+  <%= link_to "Add a Book", new_book_path %>
 </section>
 
 <section id="book-statistics">
@@ -36,13 +37,11 @@
   </section>
 </section>
 
-<section class="secondary-nav">
-  <%= link_to "Add a Book", new_book_path %>
-</section>
-
+<section id="book-container">
 <% @books.each do |book| %>
   <section class='book-card' id="book-<%= book.id %>">
-    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>"></a>
+    <a href=<%= book_path(book) %>><img src="<%= book.thumbnail %>" alt="cover of <%= book.title %>" class="image-cover"></a>
+  <div class="book-contents">
     <p>Title: <%= link_to book.title, book_path(book) %> </p>
     <p>Page Count: <%= book.pages %> </p>
     <p>Year Published: <%= book.year_published %> </p>
@@ -54,6 +53,7 @@
     </ul>
     <p>Average rating: <%= book.average_rating.round(1) %> / 5</p>
     <p>Total reviews: <%= book.review_count %></p>
+  </div>
   </section>
   <% end %>
 </section>

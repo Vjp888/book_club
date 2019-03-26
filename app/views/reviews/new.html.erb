@@ -1,4 +1,6 @@
-<h1>Add a review for <%= @book.title %></h1>
+<div class="form-title">
+  <h1>Add a review for <%= @book.title %></h1>
+</div>
 
 <% if @review.errors.any? %>
 <ul>
@@ -8,6 +10,7 @@
 </ul>
 <% end %>
 
+<section class="form">
 <%= form_for [@book, @review] do |f| %>
   <p>
     <%= f.label :username %>
@@ -16,7 +19,7 @@
 
   <p>
     <%= f.label :rating %>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, in: 1..5 %>
   </p>
 
   <p>
@@ -32,3 +35,4 @@
   <p><%= f.submit %></p>
 
 <% end %>
+</section>
