@@ -13,6 +13,9 @@ It tested our abilities to setup a database with many-to-many relationships and 
 * [Ruby on Rails 5.1.6](https://rubyonrails.org/) - Web Framework
 * [PostgreSQL](https://postgresapp.com/) - Database Management System
 
+### Database Schema
+<img src='./app/assets/images/db_schema.png' width='700px'>
+
 ### Screenshot of Books index page
 <img src='./app/assets/images/book_index_screenshot.png' width='700px'>
 
