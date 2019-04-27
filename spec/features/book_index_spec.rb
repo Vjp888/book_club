@@ -19,7 +19,7 @@ RSpec.describe 'Book index', type: :feature do
     end
 
     within "#book-#{book_2.id}" do
-      expect(page).to have_xpath("//img[@src='bob.jpg']")
+      expect(page).to have_xpath("//img[@src='bob.jpg']") 
       expect(page).to have_link("Whatever", href: book_path(book_2))
       expect(page).to have_content("Page Count: 230")
       expect(page).to have_content("Year Published: 2019")
